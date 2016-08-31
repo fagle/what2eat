@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="what2eat">
+    <output-path>$PROJECT_DIR$/out/artifacts/what2eat</output-path>
+    <root id="archive" name="what2eat.war">
+      <element id="artifact" artifact-name="what2eat_war_exploded" />
+    </root>
+  </artifact>
+</component>

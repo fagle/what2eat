@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../DateChange/DateChange.iml" filepath="$PROJECT_DIR$/../DateChange/DateChange.iml" />
+      <module fileurl="file://D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_0800_DomainModelParamInput/Struts2_0800_DomainModelParamInput.iml" filepath="D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_0800_DomainModelParamInput/Struts2_0800_DomainModelParamInput.iml" />
+      <module fileurl="file://D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_1900_OGNL/Struts2_1900_OGNL.iml" filepath="D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_1900_OGNL/Struts2_1900_OGNL.iml" />
+      <module fileurl="file://D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_2000_StrutsTags/Struts2_2000_StrutsTags.iml" filepath="D:/BaiduYunDownload/84_尚学堂(中国最专业JAVA培训机构)_Struts2_源码与文档/src/Struts2_2000_StrutsTags/Struts2_2000_StrutsTags.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/what2eat.iml" filepath="$PROJECT_DIR$/.idea/what2eat.iml" />
+    </modules>
+  </component>
+</project>
