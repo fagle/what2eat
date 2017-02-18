@@ -18,10 +18,10 @@ import org.apache.commons.net.ftp.FTPReply;
 public class ftpTest {
     /**
      * 获得连接-FTP方式
-     * @param hostname FTP服务器地址
+     * @param hostName FTP服务器地址
      * @param port FTP服务器端口
-     * @param username FTP登录用户名
-     * @param password FTP登录密码
+     * @param userName FTP登录用户名
+     * @param passWord FTP登录密码
      * @return FTPClient
      */
     public FTPClient getConnectionFTP(String hostName, int port, String userName, String passWord) {
@@ -121,7 +121,7 @@ public class ftpTest {
      * 删除文件-FTP方式
      * @param ftp FTPClient对象
      * @param path FTP服务器上传地址
-     * @param filename FTP服务器上要删除的文件名
+     * @param fileName FTP服务器上要删除的文件名
      * @return
      */
     public boolean deleteFile(FTPClient ftp, String path, String fileName) {

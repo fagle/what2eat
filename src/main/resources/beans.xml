@@ -31,9 +31,19 @@
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>classpath:jdbc.properties</value>
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:strings.properties</value>
+            </list>
 		</property>
 	</bean>
+
+    <bean id="cdnProperties" class="com.frost.service.StaticProperties">
+        <property name="baseUrl" value="${cdn.urlBase}" />
+        <property name="password" value="${cdn.password}" />
+        <property name="userName" value="${cdn.userName}" />
+		<property name="ftpAddr" value="${cdn.ftpAddr}" />
+    </bean>
 
 	<bean id="dataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">

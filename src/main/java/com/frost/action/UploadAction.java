@@ -1,4 +1,5 @@
 package com.frost.action;
+import com.frost.service.StaticProperties;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -12,9 +13,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.json.JSONObject;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 /**
  * Created by fagle on 2016/3/23.
  */
@@ -25,6 +32,8 @@ import org.apache.commons.net.ftp.FTPReply;
  *
  */
 @SuppressWarnings("serial")
+@Component
+@Scope(SCOPE_PROTOTYPE)
 public class UploadAction extends ActionSupport implements SessionAware {
     // 上传文件域
     private File file;
@@ -37,8 +46,14 @@ public class UploadAction extends ActionSupport implements SessionAware {
     private String username;
     private String password;
     private Map<String, Object> session;
+    private JSONObject jsonObject = new JSONObject();
     private  FTPClient ftp;
-    private String ftpAddr;
+    private StaticProperties cdnProperties;
+
+    @Resource
+    public void setCdnProperties(StaticProperties cdnProperties) {
+        this.cdnProperties = cdnProperties;
+    }
 
     @Override
     public String execute() {
@@ -68,7 +83,7 @@ public class UploadAction extends ActionSupport implements SessionAware {
             //fis = null;
             //fos.close();
             //fos = null;
-            if (connect("/image", ftpAddr, 2222, "user", "1234")) {
+            if (connect("/image", cdnProperties.getFtpAddr(), 2222, cdnProperties.getUserName(), cdnProperties.getPassword())) {
                 System.out.println("ftp 连接成功。");
             }
             ftp.storeFile(name, fis);
@@ -88,8 +103,13 @@ public class UploadAction extends ActionSupport implements SessionAware {
         } finally {
             close(fos, fis);
         }
-        session.put("retcode", Integer.toString(retcode));
-        session.put("url", url);
+        jsonObject.put("retcode", retcode);
+        if (retcode == 1) {
+            url = cdnProperties.getBaseUrl() + url;
+        } else
+            url = "";
+        jsonObject.put("url", url);
+        session.put("result", jsonObject);
         return SUCCESS;
     }
 
@@ -148,14 +168,6 @@ public class UploadAction extends ActionSupport implements SessionAware {
 
     public void setFile(File file) {
         this.file = file;
-    }
-
-    public String getFtpAddr() {
-        return ftpAddr;
-    }
-
-    public void setFtpAddr(String ftpAddr) {
-        this.ftpAddr = ftpAddr;
     }
 
     private void close(FileOutputStream fos, FileInputStream fis) {
