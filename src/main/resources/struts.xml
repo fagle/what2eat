@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+    <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+    <constant name="struts.action.extension" value="do"/>
+    <!--解决乱码    -->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false"/>
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.multipart.maxSize" value="22097152"/>
+    <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+    <constant name="struts.multipart.saveDir " value="/tmp"/>
+
+    <package name="upload" namespace="/upload" extends="struts-default">
+        <action name="execute2" class="com.frost.action.UploadAction">
+            <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/image</param>
+            <!-- <param name="ftpAddr">10.0.0.1</param> -->
+            <param name="ftpAddr">abc.com</param>
+            <result name="success">/message.jsp</result>
+        </action>
+    </package>
+    <package name="default" namespace="/" extends="struts-default">
+
+        <action name="shop" class="com.frost.action.ShopAction">
+            <result>/index.jsp</result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,81 @@
+apply plugin: 'war'
+
+version = '1.0'
+
+repositories {
+    mavenLocal()
+    /*maven {
+        credentials {
+            username = ""
+            password = ""
+        }
+        url "http://192.168.1.1/artifactory/public/"
+    }*/
+    jcenter()
+    //mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework:spring-webmvc:3.2.17.RELEASE"
+    compile "org.springframework:spring-aspects:3.2.17.RELEASE"
+    compile "org.springframework:spring-orm:3.2.17.RELEASE"
+    compile "org.springframework:spring-instrument-tomcat:3.2.17.RELEASE"
+    //compile "org.springmodules:spring-modules-jakarta-commons:0.8"
+    compile "commons-pool:commons-pool:1.6"
+    compile "org.apache.struts:struts2-spring-plugin:2.3.20"
+    compile "org.apache.struts:struts2-core:2.3.20"
+    compile "org.hibernate:hibernate-core:3.5.4-Final"
+    compile "org.hibernate:hibernate-annotations:3.5.4-Final"
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
+    compile "javax.servlet:servlet-api:2.5"
+    compile "mysql:mysql-connector-java:5.1.31"
+    compile "com.google.code.gson:gson:2.7"
+    compile "commons-dbcp:commons-dbcp:20030825.184428"
+    compile "org.json:json:20160810"
+    compile "org.apache.httpcomponents:httpclient:4.5.1"
+    //compile "org.slf4j:slf4j-simple:1.5.8"
+    compile "org.slf4j:slf4j-log4j12:1.7.2"
+    //compile "org.apache.logging.log4j:log4j:2.0"
+    compile "tomcat:servlet:4.0.6"
+    compile "com.sun.xml.bind:jaxb1-impl:2.2.5"
+    compile "net.sourceforge.jchardet:jchardet:1.0"
+    compile 'org.kie.modules:org-apache-commons-net:6.5.0.Final'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+/*
+task syncResource(type: Sync, dependsOn: ['syncTestResource','syncResourceToDeploy']) {
+    println "sync resources"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+    def path = sourceSets.main.resources.srcDirs[0].toString() + '\\TxtTables'
+    println 'from: ' + fromDir
+    println 'to: ' + path
+    from fromDir
+    into path
+    include '*.txt'
+}
+
+task syncResourceToDeploy(type: Sync) {
+    println "sync ......"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+
+    from fromDir
+    into sourceSets['deploy'].resources.srcDirs[0].toString() + '\\TxtTables'
+    include '*.txt'
+}
+
+task syncTestResource(type: Sync) {
+    println "sync test resources"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+    def path = sourceSets.test.resources.srcDirs[0].toString() + '\\TxtTables'
+    println 'from: ' + fromDir
+    println 'to: ' + path
+    from fromDir
+    into path
+    include '*.txt'
+}*/
+

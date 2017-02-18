@@ -18,5 +18,10 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="what2eat_deploy" target="1.8" />
+      <module name="what2eat_main" target="1.8" />
+      <module name="what2eat_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
