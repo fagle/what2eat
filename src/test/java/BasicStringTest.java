@@ -59,4 +59,11 @@ public class BasicStringTest {
             return o.getA().equals(a);
         }
     }
+
+    @Test
+    public void arrayAddTest() {
+        int[] a = new int[] {1, 2, 3};
+        int[] b = new int[] {4, 5, 6};
+        //int[] c= a+b; wrong!!
+    }
 }
