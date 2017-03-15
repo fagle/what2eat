@@ -1,0 +1,1 @@
+bash -c "sh test.sh  > abc.txt"
