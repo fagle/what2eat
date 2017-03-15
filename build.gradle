@@ -1,5 +1,6 @@
 apply plugin: 'war'
-
+apply plugin: "idea"
+group 'me.nubi'
 version = '1.0'
 
 repositories {
@@ -15,17 +16,25 @@ repositories {
     //mavenCentral()
 }
 
+ext {
+    strutsVersion = '2.3.32'
+    springVersion = '4.3.7.RELEASE'
+    hibernateVersion = '5.2.8.Final'
+}
+
 dependencies {
-    compile "org.springframework:spring-webmvc:3.2.17.RELEASE"
-    compile "org.springframework:spring-aspects:3.2.17.RELEASE"
-    compile "org.springframework:spring-orm:3.2.17.RELEASE"
-    compile "org.springframework:spring-instrument-tomcat:3.2.17.RELEASE"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "org.springframework:spring-aspects:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework:spring-instrument-tomcat:${springVersion}"
     //compile "org.springmodules:spring-modules-jakarta-commons:0.8"
     compile "commons-pool:commons-pool:1.6"
-    compile "org.apache.struts:struts2-spring-plugin:2.3.20"
-    compile "org.apache.struts:struts2-core:2.3.20"
-    compile "org.hibernate:hibernate-core:3.5.4-Final"
-    compile "org.hibernate:hibernate-annotations:3.5.4-Final"
+    compile "org.apache.struts:struts2-spring-plugin:${strutsVersion}"
+    compile "org.apache.struts:struts2-json-plugin:${strutsVersion}"
+    compile 'com.hynnet:json-lib:2.4'
+    compile "org.apache.struts:struts2-core:${strutsVersion}"
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
+    //compile "org.hibernate:hibernate-annotations:${hibernateVersion}"
     compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
     compile "javax.servlet:servlet-api:2.5"
     compile "mysql:mysql-connector-java:5.1.31"
@@ -40,6 +49,21 @@ dependencies {
     compile "com.sun.xml.bind:jaxb1-impl:2.2.5"
     compile "net.sourceforge.jchardet:jchardet:1.0"
     compile 'org.kie.modules:org-apache-commons-net:6.5.0.Final'
+
+    // https://mvnrepository.com/artifact/com.jcraft/jsch
+    compile group: 'com.jcraft', name: 'jsch', version: '0.1.54'
+    // https://mvnrepository.com/artifact/com.github.cverges/expect4j
+    //compile group: 'com.github.cverges', name: 'expect4j', version: '1.9'
+    compile "commons-net:commons-net:3.3"
+    compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.oro:2.0.8_6'
+    compile files('expect4j-1.9.jar', 'com.springsource.tcl.lang-1.4.1.jar')
+    /*
+    <dependency>
+    <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+            <scope>test</scope>*/
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 

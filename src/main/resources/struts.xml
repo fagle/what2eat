@@ -10,7 +10,7 @@
 
     <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
         如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
-    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.action.extension" value="do,"/>
     <!--解决乱码    -->
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
@@ -28,10 +28,25 @@
             <result name="success">/result.jsp</result>
         </action>
     </package>
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default">
 
         <action name="shop" class="com.frost.action.ShopAction">
+            <result>/eat.jsp</result>
+        </action>
+        <action name="date_query" class="com.frost.action.DateAction">
             <result>/index.jsp</result>
+        </action>
+        <action name="date_edit" class="com.frost.action.DateAction" method="input">
+            <result>/index.jsp</result>
+        </action>
+        <action name="update_srv_cfg" class="com.frost.action.DateAction" method="updateServerCfg">
+            <result>/index.jsp</result>
+        </action>
+        <action name="restart_srv" class="com.frost.action.DateAction" method="restartServer">
+            <result>/index.jsp</result>
+        </action>
+        <action name="get_log" class="com.frost.action.DateAction" method="requestLog">
+            <result type="json"><param name="root">result</param></result>
         </action>
     </package>
 </struts>
