@@ -1,0 +1,1603 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>JS工具包</title>
+	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/reset.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/util.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/js/prettify/prettify.css" />
+	<style type="text/css">
+		#wrapper { width:800px; margin:0 auto; padding-bottom:50px; }
+		
+		h1 { padding:5px 0; color:#337ab7; font-size:30px; font-weight:600; }
+		
+		fieldset { border:1px solid #ebebeb; border-radius:2px; margin-top:10px; padding:10px; }
+		fieldset > legend { background-color:#337ab7; border-radius:2px; padding:3px 20px; color:#fff; font-size:14px; }
+		fieldset > .content { padding:0 20px; }
+		fieldset > .content > h4 { margin:10px 0; }
+		fieldset > .content > h5 { margin:10px 0; color:#1e9300; }
+		fieldset > .content > p { margin:10px 0; }
+		fieldset > .content > ol { list-style:circle; padding-left:17px; }
+		fieldset > .content > ol > li { margin:10px 0; }
+		fieldset > .content > ol > li > a { color:#1e9300; font-weight:600; }
+		fieldset > .content dl { border-left:1px dashed #ddd; padding-left:20px; }
+		fieldset > .content dl > dt { font-weight:600; }
+		fieldset > .content dl > dd { margin:10px 0; }
+		
+		code { border-radius:2px; background-color:#f8f8f8; padding:2px 4px; white-space:nowrap; color:#c7254e; }
+		
+		.demo { border:1px solid #ebebeb; margin-bottom:-1px; padding:10px; }
+		
+		.prettyprint { border:1px solid #ebebeb; background-color:#fff; font-size:12px; }
+		ol.linenums { list-style:decimal; }
+	</style>
+    <script type="text/javascript" src="../assets/js/util.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../assets/js/prettify/prettify.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+			window.prettyPrint && prettyPrint();
+		});
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>util.js</h1>
+		<fieldset>
+			<legend>简介</legend>
+			<div class="content">
+				<p>JS 工具包，提供常用的函数接口，不依赖于任何js库。</p>
+				<h4>目录</h4>
+				<p>开发版：<a href="../assets/js/util.js" class="margin-right-xxl">../assets/js/util.js</a></p>
+				<p>压缩版：<a href="../assets/js/util.min.js">../assets/js/util.min.js</a></p>
+				<h4>功能</h4>
+				<ol>
+			        <li><a href="#namespace">命名空间类</a>：注册命名空间</li>
+			        <li><a href="#com">常规类</a>：变量类型判断、创建GUID标识符、创建随机数、创建随机字符串等</li>
+			        <li><a href="#test">输入检测类</a>：判断用户的输入或选择是否正确</li>
+			        <li><a href="#object">对象类</a>：判断对象是否为空、对象深拷贝、判断对象是否包含指定的键、获取对象的属性长度等</li>
+			        <li><a href="#array">数组类</a>：判断指定元素是否存在于某个数组中、移除数组中的指定元素、数组去重等</li>
+			        <li><a href="#number">数值类</a>：将数值格式化为含有千分位的字符串、移除千分位等</li>
+			        <li><a href="#string">字符串类</a>：去除字符串左右空格、字符串截取后面加入...、将日期字符串转换为Date对象、格式化等</li>
+			        <li><a href="#date">日期类</a>：获取年、月、日、周以及当前时间等</li>
+			        <li><a href="#math">运算类</a>：求和、加、减、乘、除运算等</li>
+			        <li><a href="#browser">浏览器类</a>：浏览器内核判断、名称获取、版本获取等</li>
+			        <li><a href="#page">页面类</a>：刷新当前页面、页面跳转等</li>
+			        <li><a href="#url">URL类</a>：获取url参数集合、添加、修改或获取url指定参数</li>
+			        <li><a href="#dom">DOM类</a>：DOM载入就绪事件等</li>
+			        <li><a href="#event">事件类</a>：添加、删除事件处理函数等</li>
+			        <li><a href="#http">HTTP类</a>：Ajax请求、Ajax请求队列等</li>
+			        <li><a href="#cookie">Cookie类</a>：设置、获取和删除cookie</li>
+			        <li><a href="#storage">Storage类</a>：设置、获取和删除localStorage</li>
+			        <li><a href="#mobile">移动类</a>：根据屏幕大小动态设置rem相对单位</li>
+			      </ol>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>API</legend>
+			<div class="content margin-bottom-xxl">
+				<h5 id="namespace">命名空间类</h5>
+				<p><code>Util.namespace</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>注册一个命名空间</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.namespace('people');
+people.say = function(){
+	alert('hello world');
+};
+people.say();
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="com">常规类</h5>
+				<p><code>Util.com.isWindow</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Window对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isWindow(window);
+alert(bool); // true
+
+bool = Util.com.isWindow({});
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isElement</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为DOM对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isElement(jQuery('body')[0]);
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isNumber</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Number对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isNumber(123);
+alert(bool); // true
+
+bool = Util.com.isWindow('123');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isString</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为String对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isString('123');
+alert(bool); // true
+
+bool = Util.com.isString(123);
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isArray</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Array对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isArray([]);
+alert(bool); // true
+
+bool = Util.com.isArray({});
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isBoolean</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Boolean对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isBoolean(false);
+alert(bool); // true
+
+bool = Util.com.isBoolean('false');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isDate</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Date对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isDate(new Date());
+alert(bool); // true
+
+bool = Util.com.isDate('2015-1-1 12:00:00');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isFunction</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Function对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var callback = function(){
+	alert('hello world');
+};
+var bool = Util.com.isFunction(callback);
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isRegex</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Regex对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var rgx = /.+/;
+var bool = Util.com.isRegex(rgx);
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isObject</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为Object对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isObject({});
+alert(bool); // true
+
+bool = Util.com.isObject(new Object());
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isPlainObject</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为纯粹的对象（纯粹的对象是指通过new Object()或{}声明的对象）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isPlainObject({});
+alert(bool); // true
+
+bool = Util.com.isPlainObject(new Object());
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isNull</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为null</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isNull(null);
+alert(bool); // true
+
+bool = Util.com.isNull(undefined);
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.isUndefined</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断变量是否为undefined</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.com.isUndefined(window.missingVariable);
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.guid</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>创建一个全局唯一标识符</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var guid = Util.com.guid();
+alert(guid); // ddab7b81-868e-bfd6-4f31-63e210fc7b0f
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.random</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>在指定范围内创建一个随机数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var rd = Util.com.random(0, 100);
+alert(rd); // 42
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.com.randomAlphaNum</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>创建一个指定长度且由字母和数字组成的随机字符串</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = Util.com.randomAlphaNum(20);
+alert(str); // w9s8wog65dcdte297j5m
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="test">输入检测类</h5>
+		        <p><code>Util.test.required</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否非空</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.required('测试一下');
+alert(bool); // true
+
+bool = Util.test.required('');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.number</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为数字</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.number('100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.posNumber</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为正数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.posNumber('100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.negNumber</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为负数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.negNumber('-100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.integer</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为整数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.integer('100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.posInteger</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为正整数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.posInteger('100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.negInteger</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为负整数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.negInteger('-100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.unNegInteger</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为非负整数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.unNegInteger('100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.unPosInteger</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为非正整数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.unPosInteger('-100');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.decimal</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为浮点数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.decimal('100.25');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.posDecimal</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为正浮点数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.posDecimal('100.25');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.negDecimal</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为负浮点数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.negDecimal('-100.25');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.unNegDecimal</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为非负浮点数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.unNegDecimal('100.25');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.unPosDecimal</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为非正浮点数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.unPosDecimal('-100.25');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.date</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的日期是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.date('2015-09-14');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.qq</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的QQ号码是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.qq('511105554');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.email</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的邮箱地址是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.email('511105554@qq.com');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.mobile</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的手机号码是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.mobile('18088889999');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.telephone</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的电话号码是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.telephone('68889999');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.areaCode</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的区号是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.areaCode('0571');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.zipCode</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的邮政编码是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.zipCode('310000');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.idCard</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的身份证号码是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+alert('自己去测吧'); // ╮(╯▽╰)╭
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.url</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的URL地址是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.url('http://www.xxx.com/');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.ip4</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的IP4地址是否格式正确</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.ip4('192.168.1.1');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.zip</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户选择的是否为有效的压缩文件</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+alert('自己去测吧'); // ╮(╯▽╰)╭
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.image</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户选择的是否为有效的图片文件</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+alert('自己去测吧'); // ╮(╯▽╰)╭
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.letter</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为字母（不区分大小写）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.letter('AAAaaa');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.upperLetter</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为大写字母</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.upperLetter('AAA');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.lowerLetter</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为小写字母</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.lowerLetter('aaa');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.CH</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为中文</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.CH('中文');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.color</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为有效的RGB颜色值</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.test.color('2090d8');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.ascii</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户输入的是否为有效的ACSII编码</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+alert('自己去测吧'); // ╮(╯▽╰)╭
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.test.account</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断用户的输入是否由数字、字母或下划线组成，一般用于注册帐号时对用户名的校验</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+alert('自己去测吧'); // ╮(╯▽╰)╭
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="object">对象类</h5>
+		        <p><code>Util.object.isEmpty</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断对象是否为空</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.object.isEmpty({});
+alert(bool); // true
+
+bool = Util.object.isEmpty({ name: 'kiwi' });
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.object.clone</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>对象深拷贝</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var boy = {
+	name: 'kiwi',
+	say: function(){
+		alert(this.name);
+	}
+};
+
+var girl = Util.object.clone(boy);
+girl.name = 'lucy';
+
+boy.say(); // kiwi
+girl.say(); // lucy
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.object.has</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断对象是否包含指定的键</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var boy = {
+	name: 'kiwi',
+	say: function(){
+		alert(this.name);
+	}
+};
+
+var bool = Util.object.has(boy, 'name');
+alert(bool); // true
+
+bool = Util.object.has(boy, 'age');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.object.length</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取对象的属性长度</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var boy = {
+	name: 'kiwi',
+	say: function(){
+		alert(this.name);
+	}
+};
+var len = Util.object.length(boy);
+alert(len); // 2
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="array">数组类</h5>
+		        <p><code>Util.array.has</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断指定元素是否存在于某个数组中，返回它的索引，不存在时返回-1</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var idx = Util.array.has([1, 2, 3, 4, 5], 3);
+alert(idx); // 2
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.remove</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>移除数组中的指定元素</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr = [1, 2, 3, 4, 5];
+Util.array.remove(arr, 3);
+alert(arr); // [1, 2, 4, 5]
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.unique</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>数组去重</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr = [1, 2, 3, 3, 4, 5, 5, 5];
+var result = Util.array.unique(arr);
+alert(arr); // [1, 2, 3, 3, 4, 5, 5, 5]
+alert(result); // [1, 2, 3, 4, 5]
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.clone</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>数组拷贝（返回一个新的数组）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr = [1, 2, 3, 4, 5];
+var copy = Util.array.clone(arr);
+copy[0] = 0;
+alert(arr); // [1, 2, 3, 4, 5]
+alert(copy); // [0, 2, 3, 4, 5]
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.concat</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>连接两个数组（返回一个新的数组）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr1 = [1, 2, 3, 4, 5];
+var arr2 = [5, 6, 7, 8, 9];
+var result = Util.array.concat(arr1, arr2);
+alert(arr1); // [1, 2, 3, 4, 5]
+alert(arr2); // [5, 6, 7, 8, 9]
+alert(result); // [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.min</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>返回数字数组中的最小值</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr = [13, -5, -3, 7, 0, 2015, 1000, -200];
+var min = Util.array.min(arr);
+alert(min); // -200
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.array.max</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>返回数字数组中的最大值</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var arr = [13, -5, -3, 7, 0, 2015, 1000, -200];
+var max = Util.array.max(arr);
+alert(max); // 2015
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="number">数值类</h5>
+		        <p><code>Util.number.toThousandth</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>把数值格式化为含有千分位的字符串（默认保留两位小数）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var n = 123456789.666;
+var str = Util.number.toThousandth(n);
+alert(str); // 123,456,789.67
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.number.unToThousandth</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>移除千分位</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = '123,456,789.67';
+var n = Util.number.unToThousandth(str);
+alert(n); // 123456789.67
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="string">字符串类</h5>
+		        <p><code>Util.string.isEmpty</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断字符串是否为空</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.string.isEmpty('abc');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.isEqual</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断两个字符串是否相同</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.string.isEqual('abc', 'def');
+alert(bool); // false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.isEqualIgnoreCase</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>不区分大小写判断两个字符串是否相同</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.string.isEqualIgnoreCase('abc', 'ABC');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.getBytes</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取字符串字节数（区分中英文，中文两个字节）</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bytes = Util.string.getBytes('abc你好');
+alert(bytes); // 7
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.trim</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>去除字符串左右空格</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = '     abc     ';
+alert(str.length); // 13
+str = Util.string.trim(str);
+alert(str.length); // 3
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.occurs</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>统计指定字符在某个字符串中出现的次数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = 'abcdeabcdabc';
+var total = Util.string.occurs(str, 'ab');
+alert(total); // 3
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.startWith</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>是否是以指定字符开头</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.string.startWith('#name', '#');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.endWith</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>是否是以指定字符结尾</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.string.endWith('#name', 'name');
+alert(bool); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.intercept</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>字符串截取后面加入...</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = Util.string.intercept('防止被转码和页面重排版的方法', 10);
+alert(str); // 防止被转码和页面重排...
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.toArray</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>将字符串用指定的字符分割成数组</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = '1,2,3,4,5';
+var arr = Util.string.toArray(str, ',');
+alert(Util.com.isArray(arr)); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.toDate</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>将日期字符串（如“1988-9-3 12:30:00”）转换为Date对象</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = '1988-9-3 12:30:00';
+var date = Util.string.toDate(str);
+alert(Util.com.isDate(date)); // true
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.string.format</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>格式化字符串</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var str = '&lt;input type="text" id="{id}" name="{name}" /&gt;';
+str = Util.string.format(str, {
+	id: 'name',
+	name: 'username'
+});
+alert(str); // &lt;input type="text" id="name" name="username" /&gt;
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="date">日期类</h5>
+		        <p><code>Util.date.getYear</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取当前年份</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var year = Util.date.getYear();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getMonth</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取当前月份</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var month = Util.date.getMonth();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getDay</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取当前日</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var day = Util.date.getDay();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getWeekday</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取当前周</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var weekday = Util.date.getWeekday();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getHour</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取小时</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var hour = Util.date.getHour();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getMinute</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取分钟</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var minute = Util.date.getMinute();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getSecond</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取秒钟</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var second = Util.date.getSecond();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getDate</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取本地日期</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var date = Util.date.getDate();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getTime</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取本地时间</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var time = Util.date.getTime();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getDateTime</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取本地日期时间</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var dateTime = Util.date.getDateTime();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.date.getDateWeek</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取本地日期和周</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var dateWeek = Util.date.getDateWeek();
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="math">运算类</h5>
+		        <p><code>Util.math.sum</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>求和运算，参数可以是数字、字符串和数组，或者三者的组合</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var total = Util.math.sum(1, '20', [100, 5, 1000]);
+alert(total); // 1126
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.math.plus</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>加法运算</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var a = 2.3, b = 3.65;
+alert(a + b); // 5.9499999999999...
+var result = Util.math.plus(a, b);
+alert(result); // 5.95
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.math.sub</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>减法运算</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var a = 10, b = 3.5;
+var result = Util.math.sub(a, b);
+alert(result); // 6.5
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.math.mul</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>乘法运算</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var a = 10, b = 3.5;
+var result = Util.math.mul(a, b);
+alert(result); // 35
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.math.div</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>除法运算</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var a = 10, b = 2.5;
+var result = Util.math.div(a, b);
+alert(result); // 4
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="browser">浏览器类</h5>
+		        <p><code>Util.browser.mozilla</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断浏览器内核是否为mozilla</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.browser.mozilla; // mozilla内核的浏览器中返回true，反之false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.webkit</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断浏览器内核是否为webkit</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.browser.webkit; // webkit内核的浏览器中返回true，反之false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.opera</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断浏览器内核是否为opera</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.browser.opera; // opera内核的浏览器中返回true，反之false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.msie</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断浏览器内核是否为msie</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.browser.msie; // msie内核的浏览器中返回true，反之false
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.name</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>返回浏览器内核的名称</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var name = Util.browser.name;
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.version</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>返回浏览器内核的版本</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var version = Util.browser.version;
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.browser.fullVersion</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>返回浏览器内核的完整版本号</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var version = Util.browser.fullVersion;
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="page">页面类</h5>
+		        <p><code>Util.page.inMobile</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断当前页面是否由移动端打开</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.page.inMobile;
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.page.inIframe</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>判断当前页面是否由iframe打开</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var bool = Util.page.inIframe;
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.page.refresh</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>刷新当前页面</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.page.refresh();
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.page.go</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>页面跳转</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.page.go('http://www.baidu.com/');
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="url">URL类</h5>
+		        <p><code>Util.url.getParams</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取URL参数集合</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var params = Util.url.getParams('/user.php?name=kiwi&age=28');
+alert(params); // { name: "kiwi", age: "28" }
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.url.modify</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取、修改或添加URL参数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var url = '/user.php?name=kiwi&age=28';
+
+var name = Util.url.modify(url, 'name');
+alert(name); // kiwi
+
+var url1 = Util.url.modify(url, 'name', 'lucy');
+alert(url1); // /user.php?name=lucy&age=28
+
+var url2 = Util.url.modify(url, 'height', 170);
+alert(url2); // /user.php?name=kiwi&age=28&height=170
+
+var url3 = Util.url.modify(url, {
+	name: 'lucy',
+	height: 165
+});
+alert(url3); // /user.php?name=lucy&age=28&height=165
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="dom">DOM类</h5>
+		        <p><code>Util.dom.ready</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>DOM载入就绪，类似jQuery的$(document).ready</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.dom.ready(function(){
+	alert('ready');
+});
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="event">事件类</h5>
+		        <p><code>Util.event.bind</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>添加事件处理函数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var btn = document.getElementById('submit');
+var fn = function(){
+	alert('您触发了按钮的点击事件');
+};
+Util.event.bind(btn, 'click', fn);
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.event.unbind</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>删除事件处理函数</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var btn = document.getElementById('submit');
+var fn = function(){
+	alert('您触发了按钮的点击事件');
+};
+Util.event.unbind(btn, 'click', fn);
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="http">HTTP类</h5>
+		        <p><code>Util.http.ajax</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>发起Ajax请求，类似jQuery的$.ajax</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.http.ajax({
+	method: 'GET',
+	url: '/user.php?id=1001',
+	data: null,
+	success: function(xhr){
+		...
+	}
+});
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="cookie">Cookie类</h5>
+		        <p><code>Util.cookie.get</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取cookie</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var id = Util.cookie.get('userid');
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.cookie.set</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>设置cookie</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.cookie.set('userid', 10001);
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.cookie.remove</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>设置cookie</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.cookie.remove('userid');
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content margin-bottom-xxl">
+				<h5 id="storage">Storage类</h5>
+		        <p><code>Util.storage.get</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>获取Storage</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+var id = Util.storage.get('userid');
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.storage.set</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>设置Storage</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.storage.set('userid', 10001);
+</pre>
+					</dd>
+		        </dl>
+		        <p><code>Util.storage.remove</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>设置Storage</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+Util.storage.remove('userid');
+</pre>
+					</dd>
+		        </dl>
+			</div>
+			<div class="content">
+				<h5 id="mobile">移动类</h5>
+		        <p><code>Util.mobile.rem</code></p>
+				<dl>
+					<dt>概述</dt>
+					<dd>根据屏幕大小动态设置跟元素（html）的字体大小，最小值50px，最大值100px</dd>
+					<dt>示例</dt>
+					<dd>
+<pre class="prettyprint linenums">
+new Util.mobile.rem();
+</pre>
+					</dd>
+		        </dl>
+			</div>
+		</fieldset>
+	</div>
+</body>
+</html>
