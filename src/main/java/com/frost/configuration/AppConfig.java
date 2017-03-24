@@ -1,36 +1,35 @@
 package com.frost.configuration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
+import java.net.URL;
 
 /**
  * Created by fagle on 2017/3/14.
  */
-@Configuration
-@Profile("production")
 public class AppConfig {
-
-    public class CMD
-    {
-        public static final String UPDATE_SERVER_CFG = "update-server-cfg";
-        public static final String RESTART_SERVER = "restart-server";
-    }
-    @Bean
-
-    public Map<String, String> devCmdMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put(CMD.UPDATE_SERVER_CFG, "");
-        return map;
+    public AppConfig() {
+        URL url = getClass().getClassLoader().getResource("/update-server-txt.bat");
+        if (url == null)
+            CmdUpdateServerCfg = "";
+        else {
+            File file = new File(url.getFile());
+            CmdUpdateServerCfg = "cmd /c start " + file.getPath();
+        }
     }
 
-    @Bean
-    public Map<String, String> productionCmdMap(){
-        Map<String, String> map = new HashMap<>();
-        return map;
+    private String privateFile = "C:\\cygwin64\\home\\fagle\\.ssh\\id_rsa";
+    private String CmdUpdateServerCfg;
+
+    public String getPrivateFile() {
+        return privateFile;
     }
 
+    public String getCmdUpdateServerCfg() {
+        return CmdUpdateServerCfg;
+    }
+
+    public void setCmdUpdateServerCfg(String cmdUpdateServerCfg) {
+        CmdUpdateServerCfg = cmdUpdateServerCfg;
+    }
 }

@@ -1,3 +1,0 @@
-echo %cd%
-dir
-netstat

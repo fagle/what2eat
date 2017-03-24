@@ -5,7 +5,7 @@
 **/
 if(typeof WdatePicker === 'undefined'){
 	// 引入WdatePicker脚本
-	core.includeJs('http://ui.om.dianhun.cn/third/My97DatePicker/WdatePicker.js');
+	core.includeJs('style/third/My97DatePicker/WdatePicker.js');
 	// 
 	(function($){
 		$.fn.datepicker = function(o){

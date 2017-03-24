@@ -96,9 +96,11 @@
         <tr>
             <td>1</td>
             <td><s:property value="now"/> </td>
-            <td><pre id="log"><s:property value="result"/>
-
-            </pre> </td>
+            <td>
+                <div class="log_container" id="log_top">
+                    <pre  id="log"><s:property value="result"/></pre>
+                </div>
+            </td>
         </tr>
     </table>
 
@@ -130,7 +132,6 @@
         } );
 
         $('#update_srv_config').bind('click', function () {
-
             window.location.href = "update_srv_cfg";
         });
 
@@ -159,7 +160,7 @@
             $.ajax({
                 type: "GET",
                 url: "get_log",
-                //data: {username:$("#username").val(), content:$("#content").val()},
+                data: {offset:$("#log").text().length},
                 //dataType: "string",
                 success: function(data){
                     //$('#log').empty();   //清空resText里面的所有内容
@@ -170,7 +171,10 @@
                      + '</p></div>';
                      });*/
                     //document.getElementById('log').innerText=data
-                    $('#log').text(data);
+                    if (data) {
+                        $('#log').append(data);
+                        $('#log_top').scrollTop($('#log').height());
+                    }
                 }
             });
         }, 1000);

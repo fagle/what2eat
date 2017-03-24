@@ -1,19 +1,17 @@
 package com.frost.action;
 
+import com.frost.configuration.AppConfig;
 import com.frost.ssh.Exec;
 import com.frost.ssh.Shell;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.commons.codec.StringDecoder;
-import org.apache.commons.codec.StringEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.*;
-import java.net.URLEncoder;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,8 +32,11 @@ public class DateAction extends ActionSupport {
     private String user = "dev";
     private String host = "203.66.32.48";
     private int port = 20460;
-    private String privateFile = "C:\\cygwin64\\home\\fagle\\.ssh\\id_rsa";
+
     private String cmdLoggerFile = "";
+    private AppConfig appConfig;
+    private String privateFile;
+    private int offset;
 
     public String getServerDate() {
         return serverDate;
@@ -43,6 +44,16 @@ public class DateAction extends ActionSupport {
 
     public void setServerDate(String serverDate) {
         this.serverDate = serverDate;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+    @Resource
+    public void setAppConfig(AppConfig appConfig) {
+        this.appConfig = appConfig;
+        this.privateFile = appConfig.getPrivateFile();
     }
 
     public String getResult() {
@@ -101,26 +112,19 @@ public class DateAction extends ActionSupport {
     public String updateServerCfg() {
         new Thread(() -> {
             try {
-                String cmdstring = "test.bat";
-                Process proc = null;
-                String path = getClass().getClassLoader().getResource("/test.bat").getPath();
-                String logPath = getClass().getClassLoader().getResource("/").getPath() +"update_srv_cfg.log";
-                log.info("current path: {}", path);
-                proc = Runtime.getRuntime().exec(path);
-                FileOutputStream fos = new FileOutputStream(logPath);
-                OutputStreamWriter writer = new OutputStreamWriter(fos);
+                String cmdstring = appConfig.getCmdUpdateServerCfg();
+
+                log.info("current path: {}", cmdstring);
+                Process proc = Runtime.getRuntime().exec(cmdstring);
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(proc.getInputStream(), "GBK"));
                 char[] chars = new char[1024];
                 StringBuffer buffer = new StringBuffer(1024);
                 int count=0;
                 while ( (count = bufferedReader.read(chars)) != -1) {
                     buffer.append(chars, 0, count);
-                    writer.write(chars, 0, count);
                 }
                 bufferedReader.close();
                 result = buffer.toString();
-                writer.close();
-                fos.close();
                 proc.waitFor(); //阻塞，直到上述命令执行完
             } catch (Exception e) {
                 log.error("{}", e);
@@ -132,14 +136,14 @@ public class DateAction extends ActionSupport {
     public String requestLog() {
         String logPath = getClass().getClassLoader().getResource("/").getPath() +"update_srv_cfg.log";
         try {
-            InputStreamReader reader = new InputStreamReader(new FileInputStream(logPath));
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(logPath), "UTF-8");
             char[] chars = new char[1024];
             int i = 0;
             StringBuffer sb = new StringBuffer();
             while ((i = reader.read(chars, 0, 1024)) != -1) {
                 sb.append(chars, 0, i);
             }
-            result = sb.toString();
+            result = sb.toString().substring(offset);
             reader.close();
         } catch (FileNotFoundException fnf){
             log.info("file not found");

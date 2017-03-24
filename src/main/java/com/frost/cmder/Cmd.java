@@ -17,31 +17,20 @@ public class Cmd{
         }
     }
     public void execCommand(String arstringCommand) {
+
+    }
+
+    public void cmd(){
+
+    }
+
+    public static void main(String[] args){
+        String cmd =  "cmd /k start test.bat";
         try {
-            Runtime.getRuntime().exec(arstringCommand);
+            Runtime.getRuntime().exec(cmd);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public void cmd(){
-      /*  //打开记算器
-        String[] arstringCommand = new String[] {
-                "bash ",
-                "-c",
-                "ls", // cmd Shell命令
-                ">",
-                "abc.txt"
-        };
-        execCommand(arstringCommand);
-        */
-        //打开记事本
-        String cmd = "cmd /k start shellstart.bat";
-        execCommand(cmd);
-    }
-
-    public static void main(String[] args){
-        new Cmd().cmd();
     }
 }

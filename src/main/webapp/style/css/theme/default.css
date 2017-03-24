@@ -733,13 +733,7 @@ body { background-color:#fff; padding:15px; color:#6a788d; font:12px/1.5 verdana
 	border-bottom: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
+.log_container {
+	height: 550px;
+	overflow-y: scroll;
+}
