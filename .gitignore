@@ -1,2 +1,11 @@
 /out/
 /build/
+com/
+ftpTest.class
+.gradle/
+abcd.txt
+settings.gradle
+src/main/resources/update_srv_cfg.log
+src/main/webapp/WEB-INF/lib/
+what2eat.ipr
+what2eat.iws
