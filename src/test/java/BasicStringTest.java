@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by Fagle on 2017/2/18 0018.
  */
@@ -65,5 +67,16 @@ public class BasicStringTest {
         int[] a = new int[] {1, 2, 3};
         int[] b = new int[] {4, 5, 6};
         //int[] c= a+b; wrong!!
+    }
+
+    @Test
+    public void encodeTest() {
+        String a = "abd";
+        try {
+            String result = new String(a.getBytes("ISO-8859-1"), "GBK");
+            System.out.println(result);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }
