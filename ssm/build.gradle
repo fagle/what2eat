@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:2.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+
+plugins {
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+}
+apply plugin: 'war'
+
+
+repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    /*maven {
+        credentials {
+            username = ""
+            password = ""
+        }
+        url "http://192.168.1.1/artifactory/public/"
+    }*/
+    jcenter()
+    //mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'com.alibaba:fastjson:1.1.26'
+    compile 'net.sf.json-lib:json-lib:2.4:jdk15'
+    compile 'org.apache.shiro:shiro-core:1.4.0'
+    compile 'org.apache.shiro:shiro-web:1.4.0'
+    compile 'org.apache.shiro:shiro-quartz:1.4.0'
+    compile 'org.apache.shiro:shiro-spring:1.4.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.4'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.4'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.4'
+    /*compile("org.thymeleaf:thymeleaf-spring4")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")*/
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

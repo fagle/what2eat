@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm.iml" group="ssm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm_main.iml" group="ssm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm_test.iml" group="ssm" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat_main.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat_main.iml" group="what2eat" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat_test.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat_test.iml" group="what2eat" />
