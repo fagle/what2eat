@@ -2,7 +2,6 @@ package com.frost.action;
 
 import com.frost.configuration.AppConfig;
 import com.frost.ssh.Exec;
-import com.frost.ssh.Shell;
 import com.opensymphony.xwork2.ActionSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -76,7 +78,6 @@ public class DateAction extends ActionSupport {
     public String execute() {
         String cmd = "echo sudo date -s '2017-03-10 11:55:00' +'%Y-%m-%d %H:%M:%S'; ls --color=never";
         cmd = "date +'%Y-%m-%d %H:%M:%S'";
-        Shell shell = new Shell(host, port, user, "", privateFile);
        /* if (shell.executeCommands(new String[] {cmd}) )
             try {
                 result = shell.getResponse();

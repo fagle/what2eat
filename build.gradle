@@ -70,7 +70,7 @@ dependencies {
     //compile group: 'com.github.cverges', name: 'expect4j', version: '1.9'
     compile "commons-net:commons-net:3.3"
     compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.oro:2.0.8_6'
-    compile files('expect4j-1.9.jar', 'com.springsource.tcl.lang-1.4.1.jar')
+
     /*
     <dependency>
     <groupId>org.apache.commons</groupId>
