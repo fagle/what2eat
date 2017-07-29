@@ -10,7 +10,7 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- 自动扫描(自动注入) -->
-	<context:component-scan base-package="com.sojson.*.controller;com.sojson.*.*.controller"/>
+	<context:component-scan base-package="me.nubi.config;me.nubi.controller"/>
 
  	<!--<mvc:annotation-driven  /&lt;!&ndash; cache-period="315360000" &ndash;&gt;-->
 	<!--<mvc:resources mapping="/images/**" location="/images/" />
@@ -20,7 +20,7 @@
 	
 	
 	<!-- 自动扫描 标签 -->
-	<context:component-scan base-package="com.sojson.*.*.tag;com.sojson.*.tag" />
+	<context:component-scan base-package="me.nubi.*.tags" />
 	<bean name="api" class="me.nubi.core.tags.APITemplateModel"/>
 	<bean name="springContextUtil" class="me.nubi.utils.SpringContextUtil" scope="singleton"/>
 	

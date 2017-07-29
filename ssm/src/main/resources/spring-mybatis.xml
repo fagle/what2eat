@@ -11,8 +11,8 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
 >
 	<!-- 自动扫描(自动注入) -->
-	<context:component-scan base-package="com.sojson.*.service;com.sojson.*.*.service"/>
-	<context:component-scan base-package="com.sojson.common.timer"/>
+	<context:component-scan base-package="me.nubi.service"/>
+	<context:component-scan base-package="me.nubi.timer"/>
 	
 	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
     	<property name="resultSetLogEnabled" value="true" />
@@ -55,7 +55,7 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 		<property name="mapperLocations"  >
 			<list>
-				<value>classpath:com/sojson/common/mapper/*.xml</value>
+				<value>classpath*:me/nubi/mapper/*.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -67,7 +67,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.sojson.common.dao" />
+		<property name="basePackage" value="me.nubi.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -84,17 +84,13 @@
 			<tx:method name="del*" />
 			<tx:method name="load*" />
 			<tx:method name="init*" />
-
-
-
-
 			<tx:method name="*"  read-only="true"/>
 		</tx:attributes>
 	</tx:advice>
  	<!-- AOP配置--> 
 	<aop:config>
 		<aop:pointcut id="myPointcut"
-			expression="execution(public * com.sojson.*.service.impl.*.*(..))" />
+			expression="execution(public * me.nubi.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />
 	</aop:config>
 <!--	<aop:config>-->

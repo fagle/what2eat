@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+html, body { height:100%; }
+body { min-width:1024px; color:#6a788d; font:12px/1.5 verdana, 'microsoft yahei'; }
+
+.container { width:1024px; margin:0 auto; }
+
+#wrapper { min-height:100%; }
+
+#header { height:100px; border-bottom:1px solid #d5dae6; background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,.1); }
+#header .container { height:100px; }
+#header .logo { float:left; margin:22px 0 0; }
+#header .logo a { display:block; }
+#header .back { float:right; height:50px; border-radius:50px; background-color:#5ab0ed; box-shadow:-1px 1px 5px rgba(0,0,0,.4) inset; margin:24px 0 0; padding:0 30px; text-decoration:none; line-height:50px; color:#fff; font-size:18px; }
+
+#main { padding-top:50px; padding-bottom:81px; }
+#main .products {  }
+#main .products li { position:relative; float:left; width:256px; padding:30px 0; }
+#main .products li a, #main .products li img { display:block; width:126px; height:126px; }
+#main .products li a { outline:none; border:10px solid #d7dfed; border-radius:100%; margin:0 auto; overflow:hidden; }
+#main .products li em { display:block; height:30px; margin-top:20px; overflow:hidden; line-height:30px; text-align:center; font-size:18px; }
+#main .products li i { position:absolute; left:108px; bottom:-1px; display:none; width:40px; height:20px; background:url(../../images/views/choose/triangle.png) no-repeat 0 0; }
+#main .products li:hover a { border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); transform:scale(1.1); }
+#main .products li.open a { border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); transform:scale(1.1); }
+#main .products li.open i { display:block; }
+#main .systems { display:none; border-top:1px solid #d5dae6; border-bottom:1px solid #d5dae6; background-color:#fff; padding:20px 0; }
+#main .systems li { float:left; width:256px; padding:20px 0; }
+#main .systems li a { position:relative; display:block; width:110px; height:110px; border-radius:20px; margin:0 auto; overflow:hidden; }
+#main .systems li a span { position:absolute; top:0; left:0; z-index:10; width:110px; height:110px; }
+#main .systems li a:hover span {  background-color:rgba(0,0,0,.1); }
+#main .systems li em { display:block; margin-top:10px; line-height:2; text-align:center; font-size:14px; }
+
+#footer { height:80px; border-top:1px solid #b0b9cd; background-color:#d5dae6; margin-top:-81px; }
+#footer p { margin-bottom:0; line-height:80px; text-align:center; }
+
+@-webkit-keyframes proNormal {
+	0% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -webkit-transform:scale(1.15);
+	}
+	100% {
+		border-color:#d7dfed; -webkit-transform:scale(1);
+	}
+}
+@-moz-keyframes proNormal {
+	0% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -moz-transform:scale(1.15);
+	}
+	100% {
+		border-color:#d7dfed; -moz-transform:scale(1);
+	}
+}
+@-ms-keyframes proNormal {
+	0% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -ms-transform:scale(1.15);
+	}
+	100% {
+		border-color:#d7dfed; -ms-transform:scale(1);
+	}
+}
+@-o-keyframes proNormal {
+	0% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -o-transform:scale(1.15);
+	}
+	100% { border-color:#d7dfed; -o-transform:scale(1);
+	}
+}
+@keyframes proNormal {
+	0% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); transform:scale(1.15);
+	}
+	100% { border-color:#d7dfed; transform:scale(1);
+	}
+}
+@-webkit-keyframes proHover {
+	0% {
+		border-color:#d7dfed; -webkit-transform:scale(1);
+	}
+	100% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -webkit-transform:scale(1.15);
+	}
+}
+@-moz-keyframes proHover {
+	0% {
+		border-color:#d7dfed; -moz-transform:scale(1);
+	}
+	100% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -moz-transform:scale(1.15);
+	}
+}
+@-ms-keyframes proHover {
+	0% {
+		border-color:#d7dfed; -ms-transform:scale(1);
+	}
+	100% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -ms-transform:scale(1.15);
+	}
+}
+@-o-keyframes proHover {
+	0% {
+		border-color:#d7dfed; -o-transform:scale(1);
+	}
+	100% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); -o-transform:scale(1.15);
+	}
+}
+@keyframes proHover {
+	0% {
+		border-color:#d7dfed; transform:scale(1);
+	}
+	100% {
+		border-color:#fff; box-shadow:0 4px 4px rgba(0,0,0,.2); transform:scale(1.15);
+	}
+}

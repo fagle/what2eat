@@ -4,7 +4,7 @@
     <file type="Struts2" url="file://$PROJECT_DIR$/out/artifacts/what2eat_war_exploded/WEB-INF/classes/libs/exploded/what2eat-1.0.war/WEB-INF/classes/resources/main/struts.xml" />
     <file type="Struts2" url="file://$PROJECT_DIR$/out/artifacts/what2eat_war_exploded/WEB-INF/classes/resources/main/struts.xml" />
     <file type="Struts2" url="file://$PROJECT_DIR$/out/artifacts/what2eat_war_exploded/WEB-INF/classes/struts.xml" />
-    <file type="Struts2" url="file://$PROJECT_DIR$/src/main/resources/struts.xml" />
+    <file type="Struts2" url="file://$PROJECT_DIR$/what2eatapp/src/main/resources/struts.xml" />
     <type id="Spring" />
     <type id="web" />
   </component>

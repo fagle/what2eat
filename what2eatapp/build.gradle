@@ -1,0 +1,119 @@
+apply plugin: 'war'
+apply plugin: "idea"
+group 'me.nubi'
+version = '1.0'
+
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        jcenter()
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:2.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    /*maven {
+        credentials {
+            username = ""
+            password = ""
+        }
+        url "http://192.168.1.1/artifactory/public/"
+    }*/
+    jcenter()
+    //mavenCentral()
+}
+
+ext {
+    strutsVersion = '2.3.32'
+    springVersion = '4.3.7.RELEASE'
+    hibernateVersion = '5.2.8.Final'
+}
+
+dependencies {
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "org.springframework:spring-aspects:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework:spring-instrument-tomcat:${springVersion}"
+    //compile "org.springmodules:spring-modules-jakarta-commons:0.8"
+    compile "commons-pool:commons-pool:1.6"
+    compile "org.apache.struts:struts2-spring-plugin:${strutsVersion}"
+    compile "org.apache.struts:struts2-json-plugin:${strutsVersion}"
+    compile 'com.hynnet:json-lib:2.4'
+    compile "org.apache.struts:struts2-core:${strutsVersion}"
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
+    //compile "org.hibernate:hibernate-annotations:${hibernateVersion}"
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final"
+    compile "javax.servlet:servlet-api:2.5"
+    compile "mysql:mysql-connector-java:5.1.31"
+    compile "com.google.code.gson:gson:2.7"
+    compile "commons-dbcp:commons-dbcp:20030825.184428"
+    compile "org.json:json:20160810"
+    compile "org.apache.httpcomponents:httpclient:4.5.1"
+    //compile "org.slf4j:slf4j-simple:1.5.8"
+    compile "org.slf4j:slf4j-log4j12:1.7.2"
+    //compile "org.apache.logging.log4j:log4j:2.0"
+    compile "tomcat:servlet:4.0.6"
+    compile "com.sun.xml.bind:jaxb1-impl:2.2.5"
+    compile "net.sourceforge.jchardet:jchardet:1.0"
+    compile 'org.kie.modules:org-apache-commons-net:6.5.0.Final'
+
+    // https://mvnrepository.com/artifact/com.jcraft/jsch
+    compile group: 'com.jcraft', name: 'jsch', version: '0.1.54'
+    // https://mvnrepository.com/artifact/com.github.cverges/expect4j
+    //compile group: 'com.github.cverges', name: 'expect4j', version: '1.9'
+    compile "commons-net:commons-net:3.3"
+    compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.oro:2.0.8_6'
+
+    /*
+    <dependency>
+    <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+            <scope>test</scope>*/
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+/*
+task syncResource(type: Sync, dependsOn: ['syncTestResource','syncResourceToDeploy']) {
+    println "sync resources"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+    def path = sourceSets.main.resources.srcDirs[0].toString() + '\\TxtTables'
+    println 'from: ' + fromDir
+    println 'to: ' + path
+    from fromDir
+    into path
+    include '*.txt'
+}
+
+task syncResourceToDeploy(type: Sync) {
+    println "sync ......"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+
+    from fromDir
+    into sourceSets['deploy'].resources.srcDirs[0].toString() + '\\TxtTables'
+    include '*.txt'
+}
+
+task syncTestResource(type: Sync) {
+    println "sync test resources"
+    def fromDir = 'D:\\proj\\BeatRacer\\Project\\Assets\\Resources\\TxtTables\\'
+    def path = sourceSets.test.resources.srcDirs[0].toString() + '\\TxtTables'
+    println 'from: ' + fromDir
+    println 'to: ' + path
+    from fromDir
+    into path
+    include '*.txt'
+}*/
+

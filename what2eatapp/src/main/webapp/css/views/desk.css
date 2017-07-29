@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+html, body { height:100%; overflow:hidden; }
+
+/* 分割线 */
+.line { height:0; border-top:1px solid #dbdfe5; border-bottom:1px solid #fff; margin:0 20px; padding:0; overflow:hidden; }
+
+/* 数据统计 */
+.statistics { margin:0; padding:10px; }
+.statistics li { float:left; width:20%; padding:10px; }
+.statistics div { border-top:5px solid #eaeef6; border-bottom:1px solid #dfe5f1; background-color:#fff; padding:20px; overflow:hidden; }
+.statistics dl { background-repeat:no-repeat; background-position:0 0; margin:0; padding:0 0 0 84px; }
+.statistics div.c0 dl { background-image:url(../../images/views/desk/icon-statistics1.png); }
+.statistics div.c0:hover { border-color:#29a4df; background-color:#d3f1ff; }
+.statistics div.c1 dl { background-image:url(../../images/views/desk/icon-statistics2.png); }
+.statistics div.c1:hover { border-color:#ff5454; background-color:#ffd4d4; }
+.statistics div.c2 dl { background-image:url(../../images/views/desk/icon-statistics3.png); }
+.statistics div.c2:hover { border-color:#bdea74; background-color:#edffd1; }
+.statistics div.c3 dl { background-image:url(../../images/views/desk/icon-statistics4.png); }
+.statistics div.c3:hover { border-color:#7d6bc5; background-color:#dbd2ff; }
+.statistics div.c4 dl { background-image:url(../../images/views/desk/icon-statistics5.png); }
+.statistics div.c4:hover { border-color:#ff8406; background-color:#ffe9d2; }
+.statistics dl dt, .statistics dl dd { height:24px; line-height:24px; }
+.statistics dl dt { font-size:14px; }
+.statistics dl dd { font-size:12px; }
+.statistics em { display:block; margin-top:20px; font-size:14px; }
+@media screen and (min-width:720px) and (max-width:1160px){
+	.statistics { padding-bottom:20px; }
+	.statistics li { width:33.33%; padding-bottom:0; }
+}
+@media screen and (min-width:480px) and (max-width:720px){
+	.statistics { padding-bottom:20px; }
+	.statistics li { width:50%; padding-bottom:0; }
+}
+@media screen and (max-width:480px){
+	.statistics { padding-bottom:20px; }
+	.statistics li { width:100%; padding-bottom:0; }
+}
+
+/* 快捷菜单 */
+.shortcuts { padding:20px; }
+.shortcuts .box { position:relative; background-color:#fff; }
+.shortcuts .icon { position:absolute; top:0; bottom:0; left:0; width:140px; border-bottom:1px solid #df9581; background:#f6c1b2 url(../../images/views/desk/icon-shortcuts.png) no-repeat 50% 50%; }
+.shortcuts .items { min-height:200px; border-bottom:1px solid #dfe5f1; margin:0 200px 0 140px; padding:20px; font-size:0; }
+.shortcuts .items a { display:inline-block; border-bottom:1px solid #dfe5f1; background-color:#f4f7fa; margin:0 10px 10px 0; padding:0 15px; line-height:48px; color:#4f5a6d; font-size:12px; }
+.shortcuts .items a.c0 { border-bottom-color:#44cef5; }
+.shortcuts .items a.c1 { border-bottom-color:#abdfc7; }
+.shortcuts .items a.c2 { border-bottom-color:#ffb3a6; }
+.shortcuts .items a.c3 { border-bottom-color:#afdd22; }
+.shortcuts .items a.c4 { border-bottom-color:#cca4e3; }
+.shortcuts .items a:hover { background-color:#eaeef6; text-decoration:none; }
+.shortcuts .button { position:absolute; top:0; bottom:0; right:0; display:block; width:200px; border-bottom:1px solid #c6cfe3; background:#d5dded url(../../images/views/desk/icon-add.png) no-repeat 50% 50%; }
+.shortcuts .button:hover { border-bottom-color:#94c4e4; background:#a7d5f3 url(../../images/views/desk/icon-add-hover.png) no-repeat 50% 50%; }
+
+/* 公告 */
+.bulletin { padding:10px; }
+.bulletin .box { float:left; width:50%; padding:10px; }
+.bulletin h4 { height:28px; background:url(../../images/views/desk/icon-list.png) no-repeat 0 50%; margin:0 0 10px 0; padding:0 0 0 30px; line-height:2; color:#69aa46; font-size:14px; font-weight:700; }
+.bulletin ul { background-color:#fff; }
+.bulletin li { position:relative; height:50px; border-bottom:1px dotted #ddd; border-left:5px solid #ddd; background-color:#fff; }
+.bulletin li a { display:block; height:49px; padding:0 15px; overflow:hidden; line-height:49px; color:#464f5d; }
+.bulletin li a:hover { text-decoration:none; }
+.bulletin li span { position:absolute; top:0; right:0; width:100px; height:49px; line-height:49px; }
+.bulletin li:hover { z-index:1; }
+.bulletin li:hover em { border-radius:10px; background-color:#f64e6f; padding:4px 8px; color:#fff; }
+.bulletin li.c0 { border-left-color:#e8b110; }
+.bulletin li.c0:hover { border-bottom-color:#e8b110; }
+.bulletin li.c1 { border-left-color:#d53f40; }
+.bulletin li.c1:hover { border-bottom-color:#d53f40; }
+.bulletin li.c2 { border-left-color:#4f99c6; }
+.bulletin li.c2:hover { border-bottom-color:#4f99c6; }
+.bulletin li.c3 { border-left-color:#9abc32; }
+.bulletin li.c3:hover { border-bottom-color:#9abc32; }
+.bulletin li.c4 { border-left-color:#cb6fd7; }
+.bulletin li.c4:hover { border-bottom-color:#cb6fd7; }
+
+
+
+
+
+
+.dh-views-infor { height:791px; background-color:#eaeef6; padding:20px; }
+.dh-note { border-radius:2px; background-color:#fff; margin-bottom:20px; }
+.dh-note dt { height:40px; border-top:1px solid #c9c9c9; border-bottom:1px solid #eaeef6; border-top-left-radius:2px; border-top-right-radius:2px; }
+.dh-note dt.c1 { border-top-color:#23bab5; }
+.dh-note dt.c2 { border-top-color:#f60; }
+.dh-note dt.c3 { border-top-color:#0088dd; }
+.dh-note dd { height:200px; }

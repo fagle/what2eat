@@ -6,7 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication(scanBasePackages = "com.sojson")
+@SpringBootApplication(scanBasePackages = "me.nubi")
 @ImportResource("classpath:spring.xml")
 public class Application extends SpringBootServletInitializer {
 

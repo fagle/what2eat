@@ -12,11 +12,15 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel>
+      <module name="shiro_ssm-shiro_main" target="1.7" />
+      <module name="shiro_ssm-shiro_test" target="1.7" />
       <module name="ssm_main" target="1.8" />
       <module name="ssm_test" target="1.8" />
       <module name="what2eat_deploy" target="1.8" />
       <module name="what2eat_main" target="1.8" />
       <module name="what2eat_test" target="1.8" />
+      <module name="what2eatapp_main" target="1.8" />
+      <module name="what2eatapp_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

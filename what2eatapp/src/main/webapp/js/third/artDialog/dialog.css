@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+body { -height:100%; -margin:0; }
+
+.d-outer { border:1px solid #394a75; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; }
+
+.d-state-visible { filter:alpha(opacity=80); opacity:0.8; }
+
+.d-state-focus { filter:alpha(opacity=100); opacity:1; }
+
+.d-border { border-collapse:collapse; border-spacing:0; }
+
+.d-nw, .d-n, .d-ne, .d-w, .d-e, .d-sw, .d-s, .d-se { background-color:#5e71a9; }
+
+.d-nw, .d-ne, .d-w, .d-e, .d-sw, .d-se { width:5px; }
+
+.d-nw, .d-n, .d-ne { height:0px; }
+
+.d-sw, .d-s, .d-se { height:5px; }
+
+.d-inner {  }
+
+.d-dialog { border-collapse:collapse; border-spacing:0; background-color:#5e71a9; }
+
+.d-head {  }
+
+.d-head-inner {  }
+
+.d-title { cursor:move; height:30px; background-color:#5e71a9; padding:0 30px 0 5px; overflow:hidden; text-overflow:ellipsis; line-height:30px; color:#fff; font-weight:700; }
+
+.d-close { display:block; position:absolute; top:6px; right:7px; cursor:pointer; width:21px; height:20px; background:url(images/close.gif) no-repeat 0 0; overflow:hidden; text-indent:-100px; }
+.d-close:hover { background-position:0 -20px; }
+
+.d-main { background-color:#fff; text-align:center; vertical-align:middle; }
+
+.d-content { height:100%; border:1px solid #526492; border-bottom-color:#7689b8; text-align:left; }
+
+.d-content .d-loading { height:48px; background:url(images/load.gif) no-repeat 50% 50%; padding:20px 80px; text-align:center; overflow:hidden; }
+/* 加载 */
+.d-content .d-loading { padding:20px; text-align:center; overflow:hidden; }
+.d-content .d-loading span { display:block; min-height:24px; height:auto !important; height:24px; background:url(images/load.gif) no-repeat 0 6px; padding-left:34px; overflow:visible; line-height:24px; }
+/* 模态 */
+.d-content .d-content-dialog { padding:10px; line-height:1.5; }
+/* 警告 */
+.d-content .d-content-warning { -width:expression(this.offsetWidth > 340 ? "340px" : "auto"); overflow:hidden; max-width:340px; padding:20px; }
+.d-content .d-content-warning span { display:block; min-height:24px; height:auto !important; height:24px; background:url(images/warning.gif) no-repeat 0 0; padding-left:34px; overflow:visible; word-wrap:break-word; word-break:break-all; line-height:24px; }
+/* 询问 */
+.d-content .d-content-confirm { -width:expression(this.offsetWidth > 340 ? "340px" : "auto"); overflow:hidden; max-width:340px; padding:20px; }
+.d-content .d-content-confirm span { display:block; min-height:24px; height:auto !important; height:24px; background:url(images/confirm.gif) no-repeat 0 0; padding-left:34px; overflow:visible; word-wrap:break-word; word-break:break-all; line-height:24px; }
+/* 成功 */
+.d-content .d-content-succeed { -width:expression(this.offsetWidth > 340 ? "340px" : "auto"); overflow:hidden; max-width:340px; padding:10px 20px; }
+.d-content .d-content-succeed span { display:block; min-height:24px; height:auto !important; height:24px; background:url(images/succeed.gif) no-repeat 0 0; padding-left:34px; overflow:visible; word-wrap:break-word; word-break:break-all; line-height:24px; }
+/* 失败 */
+.d-content .d-content-error { -width:expression(this.offsetWidth > 340 ? "340px" : "auto"); overflow:hidden; max-width:340px; padding:10px 20px; }
+.d-content .d-content-error span { display:block; min-height:24px; height:auto !important; height:24px; background:url(images/error.gif) no-repeat 0 0; padding-left:34px; overflow:visible; word-wrap:break-word; word-break:break-all; line-height:24px; }
+
+
+
+.d-foot {  }
+
+/* d-buttons */
+.d-buttons { border-width:0 1px 1px 1px; border-style:solid; border-color:#526492; background-color:#edeef0; padding:5px 10px; text-align:center; white-space:nowrap; }
+/* d-buttons > d-button */
+.d-button { cursor:pointer; display:inline-block; border:1px solid #c4c4c4; background:url(images/button.gif) repeat-x 0 0; margin:0 5px; padding:2px 7px; padding:3px 10px 2px \9; -height:27px; -padding:4px 5px 0 5px; overflow:hidden; color:#666; font-size:12px; font-family:'microsoft yahei'; }
+.d-button:focus { border-color:#9d9d9d; }
+.d-button:hover { border-color:#9d9d9d; background-position:0 -24px; }
+/* d-buttons > d-state-highlight */
+.d-state-highlight { border-color:#475a8d; background-position:0 -48px; color:#fff; }
+.d-state-highlight:focus { border-color:#394a75; }
+.d-state-highlight:hover { border-color:#394a75; background-position:0 -72px; }
+/* d-buttons > d-button[disabled] */
+.d-button[disabled] { cursor:default; filter:alpha(opacity=50); opacity:0.5; }
+
+.d-mask { background-color:#1c1e21; filter:alpha(opacity=20); opacity:0.2; }
+
+
+
+
