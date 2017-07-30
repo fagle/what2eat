@@ -30,10 +30,12 @@
 <jsp:include page="common/config/top.jsp">
     <jsp:param name="index" value="4"/>
 </jsp:include>
-<div class="container">
+
+
+<div id="movie_container" class="container">
     <%--<h3>看电影咯，123好哟啊好哟</h3>--%>
-    <div class="row">
-        <div class="col-md-12">
+
+
             <div id="willesPlay">
                 <div class="playHeader">
                     <div class="videoName">Tara - 懂的那份感觉</div>
@@ -78,15 +80,16 @@
                     </div>
                 </div>
             </div>
-
+        <div class="col-md-12">
+            <div class="row"></div>
         </div>
-    </div>
 </div>
 
 
 </body>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/media-player/reset.css"/>
 <link rel="stylesheet" href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css">
+<%--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />--%>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willesPlay.css"/>
 <script src="<%=basePath%>/js/common/jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="<%=basePath%>/js/willesPlay.js" type="text/javascript" charset="utf-8"></script>
