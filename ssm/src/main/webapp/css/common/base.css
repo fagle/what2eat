@@ -961,11 +961,7 @@ div.fff .list-inline li {
 .fixed{bottom:100px;height:auto;left:50%;margin-left:585px;overflow:hidden;padding:17px;position:fixed;width:62px}.fixed .top{display:block;height:32px;margin:0 auto 10px;overflow:hidden;width:32px;background-color:#2f87c1;font-size:34px;border-radius:2px;transition:all 1s ease 0s;margin-left:100px}.fixed .top  > i{color:white}.fixed a._ishow{transform:scale(1) rotate(-360deg) translate(0);margin-left:0px}.fixed .feeback{background:rgba(0,0,0,0) url("http://cdn.sojson.com/images/btn.png") repeat scroll 0 -365px;display:block;height:107px;margin:0 auto;overflow:hidden;text-indent:-999em;width:32px}
 
 @media screen and (max-device-width: 750px){
-    #willesPlay {
-        height: 239px;
-    }
     #movie_container{
-        padding-left: 0px;
-        padding-right: 0px;
+        overflow: hidden;
     }
 }

@@ -34,7 +34,7 @@ public class CustomSessionListener implements SessionListener {
     @Override
     public void onStart(Session session) {
         //TODO
-        System.out.println("on start");
+        //System.out.println("on start");
     }
     /**
      * 一个回话的生命周期结束
