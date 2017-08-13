@@ -38,7 +38,7 @@
     <div class="row">
         <div id="willesPlay">
             <div class="playHeader">
-                <div class="videoName">Tara - 懂的那份感觉</div>
+                <div class="videoName">${file}</div>
             </div>
             <div class="playContent">
                 <div class="turnoff">
@@ -50,10 +50,10 @@
                     </ul>
                 </div>
                 <video width="100%" height="100%" id="playVideo">
-                    <source src="http://115.231.144.59/10/z/f/m/e/zfmeprwqhiydtbklvlaodpidksxlsz/hc.yinyuetai.com/8408014F06AA7ED9E43BC2E617F24B8E.flv?sc=80b3a67012591c91&br=780&vid=782863&aid=1559&area=KR&vst=0&ptp=mv&rd=yinyuetai.com"
+                    <%--<source src="http://115.231.144.59/10/z/f/m/e/zfmeprwqhiydtbklvlaodpidksxlsz/hc.yinyuetai.com/8408014F06AA7ED9E43BC2E617F24B8E.flv?sc=80b3a67012591c91&br=780&vid=782863&aid=1559&area=KR&vst=0&ptp=mv&rd=yinyuetai.com"--%>
+                            <%--type="video/mp4">--%>
+                    <source src="<%=basePath%>/movie/${file}"
                             type="video/mp4">
-                    <%--<source src="https://d11.baidupcs.com/file/f08538f7c469f30cd14a48b62874e9a4?bkt=p3-1400f08538f7c469f30cd14a48b62874e9a4d35ee1cc00000eb3e3ec&xcode=8af52928f2d60f371c6947544466e31843b254133bcfbc7e0b2977702d3e6764&fid=792180402-250528-1093251531845566&time=1501516624&sign=FDTAXGERLBHS-DCb740ccc5511e5e8fedcff06b081203-r8GD%2BWT3wWrxw9GZB77QS%2FUoxCI%3D&to=d11&size=246670316&sta_dx=246670316&sta_cs=53487&sta_ft=rmvb&sta_ct=7&sta_mt=6&fm2=MH,Yangquan,Netizen-anywhere,,zhejiang,ct&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=1400f08538f7c469f30cd14a48b62874e9a4d35ee1cc00000eb3e3ec&sl=76480590&expires=8h&rt=pr&r=409359838&mlogid=4916831522517283345&vuk=792180402&vbdid=2927981292&fin=9.rmvb&fn=9.rmvb&rtype=1&iv=0&dp-logid=4916831522517283345&dp-callid=0.1.1&hps=1&csl=80&csign=zB1q4lGlYCRWtFJ2xVHDBOyz40Y%3D&so=0&ut=6&uter=4&serv=1&by=themis"
-                            type="video/mp4">--%>
                     当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
                 </video>
                 <div class="playTip glyphicon glyphicon-play"></div>
