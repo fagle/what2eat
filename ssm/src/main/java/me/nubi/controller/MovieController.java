@@ -25,7 +25,7 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    private static Logger logger = LoggerFactory.getLogger(DefaultController.class);
+    private static Logger logger = LoggerFactory.getLogger(MovieController.class);
 
     @RequestMapping("{name}")
     public void movie(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
@@ -71,9 +71,9 @@ public class MovieController {
             os.close();
             fis.close();
         } catch (IOException ie) {
-            logger.warn(ie.getLocalizedMessage());
+            logger.debug(ie.getLocalizedMessage());
         } catch (Exception e) {
-            logger.error("", e);
+            logger.debug("", e);
         }
     }
 }

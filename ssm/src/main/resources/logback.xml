@@ -16,6 +16,6 @@
         <appender-ref ref="FILE" />
     </root>
     <logger name="org.springframework.web" level="INFO"/>
-    <logger name="me.nubi.controller.DefaultController" level="DEBUG" />
+    <logger name="me.nubi.controller.MovieController" level="DEBUG" />
 
 </configuration>
