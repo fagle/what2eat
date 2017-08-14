@@ -25,7 +25,7 @@ public class DefaultController {
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
         try {
-            model.put("file", movieService.getAMovie().getName().getBytes());
+            model.put("file", movieService.getAMovie().getName());
         } catch (Exception e) {
             logger.error("", e);
         }
