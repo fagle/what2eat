@@ -1,12 +1,37 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "http://repo.spring.io/release" }
+        maven { url 'http://repo.spring.io/plugins-release' }
+        jcenter()
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:2.2.3'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+    }
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+}
+
+apply plugin: 'idea'
+
 allprojects {
     apply plugin: 'war'
-    group = 'org.exam'
+    group = 'me.nubi'
     version = '1.0'
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 }
 
-
+configure(allprojects) {
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'propdeps-eclipse'
+}
 
 subprojects {
     [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
