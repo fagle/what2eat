@@ -5,8 +5,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 	<!-- 引入属性文件 -->
 	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="locations">
 			<list>

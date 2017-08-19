@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 @Component
-@ConfigurationProperties(
-        prefix = "movie"
-)
+//@ConfigurationProperties(
+//        prefix = "movie"
+//)
 public class MovieService {
 
-    @Value("${path:/tmp/path}")
+    @Value("${movie.path}")
     private String path;
 
     public void setPath(String path) {

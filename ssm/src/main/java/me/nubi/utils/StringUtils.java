@@ -2,24 +2,12 @@ package me.nubi.utils;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import sun.misc.BASE64Decoder;
-
-
-
-
-
 
 /**
  * String工具
@@ -162,7 +150,7 @@ public class StringUtils extends org.apache.commons.lang.StringUtils{
 	 */
     public static String getBASE64(String str,boolean...bf) { 
        if (StringUtils.isBlank(str)) return null; 
-       String base64 = new sun.misc.BASE64Encoder().encode(str.getBytes()) ;
+       String base64 = Base64.getEncoder().encodeToString(str.getBytes());
        //去掉 '='
        if(isBlank(bf) && bf[0]){
     	   base64 = base64.replaceAll("=", "");
@@ -173,9 +161,9 @@ public class StringUtils extends org.apache.commons.lang.StringUtils{
     /** 将 BASE64 编码的字符串 s 进行解码**/
     public static String getStrByBASE64(String s) { 
        if (isBlank(s)) return ""; 
-       BASE64Decoder decoder = new BASE64Decoder(); 
+       Base64.Decoder decoder = Base64.getDecoder();
        try { 
-          byte[] b = decoder.decodeBuffer(s); 
+          byte[] b = decoder.decode(s);
           return new String(b); 
        } catch (Exception e) { 
           return ""; 
