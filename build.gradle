@@ -19,11 +19,8 @@ buildscript {
 apply plugin: 'idea'
 
 allprojects {
-    apply plugin: 'war'
     group = 'me.nubi'
     version = '1.0'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
 }
 
 configure(allprojects) {
