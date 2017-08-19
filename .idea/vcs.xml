@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../shiro/ssm-shiro" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../spring/spring-boot-examples" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>

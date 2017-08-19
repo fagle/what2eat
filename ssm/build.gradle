@@ -1,20 +1,10 @@
 buildscript {
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        jcenter()
-    }
     dependencies {
-        //classpath 'com.android.tools.build:gradle:2.2.3'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-
-plugins {
-    id 'org.springframework.boot' version '1.5.4.RELEASE'
-}
+apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 
 
@@ -33,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version:'1.5.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker'
     compile group: 'javax.servlet', name: 'jstl', version:'1.2'
     compile group: 'org.apache.tomcat', name: 'tomcat-juli', version:'7.0.27'
     compile group: 'org.apache.httpcomponents', name: 'httpclient-cache', version:'4.2.5'
@@ -77,15 +67,15 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version:'2.7.4'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version:'2.7.4'
     testCompile group: 'junit', name: 'junit', version:'4.9'
-    testCompile group: 'org.springframework', name: 'spring-test', version:'4.3.7.RELEASE'
-    providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version:'1.5.2.RELEASE'
+    testCompile group: 'org.springframework', name: 'spring-test'
+    providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat'
     providedCompile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version:'8.5.11'
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.0.1'
     providedCompile group: 'javax.servlet', name: 'jsp-api', version:'2.0'
     providedCompile group: 'org.apache.openejb', name: 'javaee-api', version:'5.0-1'
     providedCompile group: 'javax.faces', name: 'jsf-api', version:'1.2_04'
     providedCompile group: 'javax.faces', name: 'jsf-impl', version:'1.2_04'
-    compile "org.springframework.boot:spring-boot-configuration-processor"
+    optional "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 tasks.withType(JavaCompile) {

@@ -1,9 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "movie.path",
-      "type": "java.lang.String",
-      "description": "Description for movie.path."
-    }
-  ]
-}
