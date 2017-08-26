@@ -3,15 +3,13 @@ package me.nubi.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
-//@ConfigurationProperties(
-//        prefix = "movie"
-//)
 public class MovieService {
 
     @Value("${movie.path}")
@@ -40,5 +38,9 @@ public class MovieService {
                 return listFiles[0];
         }
         return null;
+    }
+
+    public List<String> getMovieList() {
+        return new ArrayList<>();
     }
 }
