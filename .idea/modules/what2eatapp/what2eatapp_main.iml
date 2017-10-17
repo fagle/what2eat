@@ -10,7 +10,7 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/../../../what2eatapp/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://I:\Java\what2eat\what2eatapp\src\main\webapp" relative="/" />
+          <root url="file://E:\Java\what2eat\what2eatapp\src\main\webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>

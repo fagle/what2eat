@@ -15,16 +15,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ssm_main" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-configuration-processor:1.5.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-freemarker:1.5.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet:jstl:1.2" level="project" />
@@ -127,6 +117,7 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-messaging:4.3.9.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.retry:spring-retry:1.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.11" level="project" />
+    <orderEntry type="library" name="Gradle: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="ssm_main" />
 </module>

@@ -17,19 +17,29 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("/movie")
+@RequestMapping("/movies")
 public class MovieController {
     @Autowired
     private MovieService movieService;
 
     private static Logger logger = LoggerFactory.getLogger(MovieController.class);
 
+    @ResponseBody()
+    @RequestMapping("list")
+    public Map list() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", movieService.getMovieList());
+        return map;
+    }
+
     @RequestMapping("{name}")
     public void movie(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
-        File file = movieService.getAMovie();
+        File file = movieService.getMovie(name);
         ServletServerHttpRequest req = new ServletServerHttpRequest(request);
         List<HttpRange> ranges = req.getHeaders().getRange();
         HttpRange range = ranges.size() > 0 ? ranges.get(0) : null;
@@ -43,6 +53,8 @@ public class MovieController {
         response.setContentType("video/mp4; charset=utf-8");
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Accept-Ranges", "bytes");
+        FileInputStream fis = null;
+        OutputStream os = null;
         try {
             //response.setHeader("Content-Disposition", "attachment;filename=" + new String(file.getName().getBytes(), "ISO8859-1"));
             if (start == 0) {
@@ -53,8 +65,8 @@ public class MovieController {
             response.setContentLength((int)(end - start + 1));
             response.setHeader("Content-Range", "bytes " + start +
                     "-" + end + "/" + fileLen);
-            OutputStream os = response.getOutputStream();
-            FileInputStream fis = new FileInputStream(file);
+            os = response.getOutputStream();
+             fis = new FileInputStream(file);
             byte[] buf = new byte[1024];
             int len;
             long i = 0;
@@ -69,16 +81,20 @@ public class MovieController {
             }
             os.flush();
             os.close();
-            fis.close();
         } catch (IOException ie) {
             logger.debug(ie.getLocalizedMessage());
+
         } catch (Exception e) {
             logger.debug("", e);
+        } finally {
+            try {
+                if (fis!=null)
+                    fis.close();
+            } catch (IOException e) {
+                logger.error("", e);
+            }
         }
     }
 
-    @ResponseBody
-    public List list() {
-        return movieService.getMovieList();
-    }
+
 }

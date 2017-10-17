@@ -165,16 +165,16 @@ def main():
     out = child.stdout
     # if out.encoding == 'cp936':
     # out = UnicodeStreamFilter(out)
-    jsonstr = ""
+    json_str = ""
     if out is not None:
         line = out.readline()
         while line != "":
             # print line
-            jsonstr += line
+            json_str += line
             line = out.readline()
     child.wait()
     params = dict()
-    json_obj = json.loads(jsonstr)
+    json_obj = json.loads(json_str)
     print json_obj
     print json_obj[u'streams'][0][u'codec_type']
     print json_obj[u'streams'][1][u'codec_type']
@@ -187,8 +187,26 @@ def main():
             params['b:v'] = stream[u'bit_rate']
             params['codec_name:v'] = stream[u'codec_name']
     print params
+
+    # ffmpeg  -hwaccel dxva2  -i "${1}" -vcodec h264_nvenc -b:v 100k -y "${2}".mp4
+    child = subprocess.Popen((u"cmd /c \"cd /d I:/movie/电子科技大学嵌入式系统（压缩版） && ffmpeg -hwaccel dxva2   "
+                             u"-i  01.wmv -vcodec h264_nvenc  -b:v %s  -b:a %s -y 01.mp4 \" "
+                              % (params['b:v'], params['b:a'])).encode('gbk'),
+                             stdout=subprocess.PIPE)
+    out = child.stdout
+    # if out.encoding == 'cp936':
+    # out = UnicodeStreamFilter(out)
+    # json_str = ""
+    if out is not None:
+        line = out.read(1)
+        while line != "":
+            print line
+            # json_str += line
+            line = out.read(1)
+    child.wait()
     end_time = time.time()
     print "take time %s s" % (end_time - start_time)
+
 
 if __name__ == "__main__":
     print sys.getdefaultencoding()

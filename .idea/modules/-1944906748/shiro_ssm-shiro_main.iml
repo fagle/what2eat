@@ -7,7 +7,7 @@
     <facet type="web" name="Web Gradle : shiro_ssm-shiro-0.0.2-SNAPSHOT.war">
       <configuration>
         <webroots>
-          <root url="file://I:\Java\shiro\ssm-shiro\src\main\webapp" relative="/" />
+          <root url="file://E:\Java\shiro\ssm-shiro\src\main\webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>

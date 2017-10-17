@@ -22,12 +22,15 @@ public class MovieService {
     private static Logger logger = LoggerFactory.getLogger(MovieService.class);
     public File getAMovie() {
         File f = new File(path);
-        File[] listFiles = f.listFiles();
+        File[] listFiles = f.listFiles((dir, name) -> name.endsWith(".mp4"));
         try {
             if (listFiles != null) {
-                for (File a : listFiles)
+                for (File a : listFiles) {
+                    if (!a.getName().endsWith(".mp4"))
+                        continue;
                     logger.info(a.getName());
-                logger.info("你好呀");
+                    logger.info("你好呀");
+                }
             }
         } catch (Exception e) {
             logger.error("", e);
@@ -40,7 +43,23 @@ public class MovieService {
         return null;
     }
 
+    public File getMovie(String fileName) {
+        return new File(path + "/"  + fileName + ".mp4");
+    }
+
     public List<String> getMovieList() {
-        return new ArrayList<>();
+        File f = new File(path);
+        File[] listFiles = f.listFiles((dir, name) -> name.endsWith(".mp4"));
+        List<String> fileNameList = new ArrayList<>();
+        try {
+            if (listFiles != null) {
+                for (File a : listFiles) {
+                    fileNameList.add(a.getName());
+                }
+            }
+        } catch (Exception e) {
+            logger.error("", e);
+        }
+        return fileNameList;
     }
 }
