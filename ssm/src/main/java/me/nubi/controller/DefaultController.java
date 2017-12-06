@@ -28,7 +28,7 @@ public class DefaultController {
         } catch (Exception e) {
             logger.error("", e);
         }
-        return "movie";
+        return "movie-list";
     }
 
 

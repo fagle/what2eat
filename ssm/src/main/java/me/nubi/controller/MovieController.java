@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRange;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,15 +27,27 @@ public class MovieController {
 
     private static Logger logger = LoggerFactory.getLogger(MovieController.class);
 
+//    @ResponseBody()
+//    @RequestMapping("list")
+//    public Map list() {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("list", movieService.getMovieList());
+//        return map;
+//    }
+
     @ResponseBody()
     @RequestMapping("list")
-    public Map list() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("list", movieService.getMovieList());
-        return map;
+    public List<String> list() {
+        return movieService.getMovieList();
     }
 
-    @RequestMapping("{name}")
+    @RequestMapping("play/{name}")
+    public String play(Map<String, Object> model, @PathVariable String name) {
+        model.put("file", name);
+        return "movie";
+    }
+
+    @RequestMapping("{name}/")
     public void movie(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
         File file = movieService.getMovie(name);
         ServletServerHttpRequest req = new ServletServerHttpRequest(request);

@@ -29,7 +29,7 @@ public class MovieService {
                     if (!a.getName().endsWith(".mp4"))
                         continue;
                     logger.info(a.getName());
-                    logger.info("你好呀");
+                    //logger.info("你好呀");
                 }
             }
         } catch (Exception e) {

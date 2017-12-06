@@ -33,19 +33,31 @@
 
 
 <div id="movie_container" class="container">
-    <%--<h3>看电影咯，123好哟啊好哟</h3>--%>
+    <p>
+    <div class="row" >
+    <ul id="list">
 
-    <div class="row">
-
+    </ul>
     </div>
+    </p>
 </div>
 
 
 </body>
+<script>
+    var baseUrl = $("script[baseUrl]").attr('baseUrl');
+    $.getJSON(baseUrl + '/movies/list',{},function(result){
+        for (var i in result) {
+            var a = '<li><a href="/movies/play/'+ result[i] + '">' + result[i] + '</a> </li> <br>';
+            console.log(a);
+            console.log($('#list'));
+            $("#list").append(a);
+        }
+    });
+</script>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/media-player/reset.css"/>
 <link rel="stylesheet" href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css">
 <%--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />--%>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willesPlay.css"/>
 <script src="<%=basePath%>/js/common/jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="<%=basePath%>/js/willesPlay.js" type="text/javascript" charset="utf-8"></script>
 </html>
