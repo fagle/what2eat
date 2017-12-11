@@ -11,8 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="_logo" href="${basePath}" style="color:#fff; font-size: 24px;" class="navbar-brand hidden-sm">SSM +
-                Shiro Demo 演示</a>
+            <a id="_logo" href="${basePath}" style="color:#fff; font-size: 24px;" class="navbar-brand hidden-sm">家庭影院</a>
         </div>
         <div role="navigation" class="navbar-collapse collapse">
             <ul class="nav navbar-nav" id="topMenu">

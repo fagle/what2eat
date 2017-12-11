@@ -86,7 +86,7 @@ public class CommonController extends BaseController {
 
 	@RequestMapping("m")
 	public String movie() {
-		return "movie";
+		return "movie-list";
 	}
 	
 	/**

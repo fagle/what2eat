@@ -54,6 +54,8 @@ public class MovieService {
         try {
             if (listFiles != null) {
                 for (File a : listFiles) {
+                    if (a.length() > Integer.MAX_VALUE)
+                        continue;
                     fileNameList.add(a.getName());
                 }
             }
