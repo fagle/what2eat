@@ -77,11 +77,11 @@
                         本项目介绍<span class="collapsing"></span>
                     </a>
                 </li>
-                <li>
-                    <a class="dropdown-toggle" href="#" >
-                        Shiro Demo 其他版本<span class="collapsing"></span>
-                    </a>
-                </li>
+                <#--<li>-->
+                    <#--<a class="dropdown-toggle" href="#" >-->
+                        <#--Shiro Demo 其他版本<span class="collapsing"></span>-->
+                    <#--</a>-->
+                <#--</li>-->
             </ul>
             <ul class="nav navbar-nav  pull-right">
                 <li class="dropdown ${(index==10)?string('active','')}" style="color:#fff;">

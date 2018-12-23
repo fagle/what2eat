@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MovieService {
@@ -44,7 +46,7 @@ public class MovieService {
     }
 
     public File getMovie(String fileName) {
-        return new File(path + "/"  + fileName + ".mp4");
+        return new File(path + "/"  + fileName);
     }
 
     public List<String> getMovieList() {
@@ -59,9 +61,29 @@ public class MovieService {
                     fileNameList.add(a.getName());
                 }
             }
+            listFiles =  f.listFiles();
+            if (listFiles != null) {
+                for (File file :listFiles) {
+                    if (file.isDirectory()) {
+                        getMovieList(file.getPath(), fileNameList);
+                    }
+
+                }
+            }
+
         } catch (Exception e) {
             logger.error("", e);
         }
         return fileNameList;
+    }
+
+    private void getMovieList(String relative_path, List<String> fileList) {
+        logger.info(relative_path);
+        File f = new File(relative_path);
+        File[] mp4files = f.listFiles((dir, name) -> name.endsWith(".mp4"));
+        if (mp4files != null) {
+            List<File> list = Arrays.asList(mp4files);
+            fileList.addAll(list.stream().filter(o->o.length() < Integer.MAX_VALUE).map(o -> f.getName() + "/" + o.getName()).collect(Collectors.toList()));
+        }
     }
 }

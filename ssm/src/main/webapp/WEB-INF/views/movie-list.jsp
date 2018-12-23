@@ -48,7 +48,7 @@
     var baseUrl = $("script[baseUrl]").attr('baseUrl');
     $.getJSON(baseUrl + '/movies/list',{},function(result){
         for (var i in result) {
-            var a = '<li><a href="/movies/play/'+ result[i] + '">' + result[i] + '</a> </li> <br>';
+            var a = '<li><a href="/movies/play?name='+ result[i] + '">' + result[i] + '</a> </li> <br>';
             console.log(a);
             console.log($('#list'));
             $("#list").append(a);

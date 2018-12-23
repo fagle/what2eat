@@ -41,14 +41,14 @@ public class MovieController {
         return movieService.getMovieList();
     }
 
-    @RequestMapping("play/{name}")
-    public String play(Map<String, Object> model, @PathVariable String name) {
+    @RequestMapping("play")
+    public String play(Map<String, Object> model, @RequestParam String name) {
         model.put("file", name);
         return "movie";
     }
 
-    @RequestMapping("{name}/")
-    public void movie(@PathVariable("name") String name, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/**")
+    public void movie(@RequestParam String name, HttpServletRequest request, HttpServletResponse response) {
         File file = movieService.getMovie(name);
         ServletServerHttpRequest req = new ServletServerHttpRequest(request);
         List<HttpRange> ranges = req.getHeaders().getRange();

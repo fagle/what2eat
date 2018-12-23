@@ -52,7 +52,7 @@
                 <video width="100%" height="100%" id="playVideo">
                     <%--<source src="http://115.231.144.59/10/z/f/m/e/zfmeprwqhiydtbklvlaodpidksxlsz/hc.yinyuetai.com/8408014F06AA7ED9E43BC2E617F24B8E.flv?sc=80b3a67012591c91&br=780&vid=782863&aid=1559&area=KR&vst=0&ptp=mv&rd=yinyuetai.com"--%>
                             <%--type="video/mp4">--%>
-                    <source src="<%=basePath%>/movies/${file}/"
+                    <source src="<%=basePath%>/movies?name=${file}"
                             type="video/mp4">
                     当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
                 </video>
@@ -69,13 +69,13 @@
                     <span class="duration">0:00:00</span>
                 </div>
                 <div class="otherControl">
-                    <span class="volume glyphicon glyphicon-volume-down"></span>
+                    <span class="volume glyphicon glyphicon-volume-up"></span>
                     <span class="fullScreen glyphicon glyphicon-fullscreen"></span>
                     <div class="volumeBar">
                         <div class="volumewrap">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0"
-                                     aria-valuemax="100" style="width: 8px;height: 40%;"></div>
+                                     aria-valuemax="100" style="width: 8px;height: 100%;"></div>
                             </div>
                         </div>
                     </div>
@@ -84,14 +84,14 @@
         </div>
     </div>
     <div class="row">
-        client-width:
-        <script>document.write(document.documentElement.clientWidth.toString())</script>
-        <br/>
-        device-width:
-        <script>document.write(window.innerWidth.toString())</script>
-        <br/>
-        DevicePixelRadio:
-        <script>document.write(window.devicePixelRatio.toString())</script>
+        <%--client-width:--%>
+        <%--<script>document.write(document.documentElement.clientWidth.toString())</script>--%>
+        <%--<br/>--%>
+        <%--device-width:--%>
+        <%--<script>document.write(window.innerWidth.toString())</script>--%>
+        <%--<br/>--%>
+        <%--DevicePixelRadio:--%>
+        <%--<script>document.write(window.devicePixelRatio.toString())</script>--%>
     </div>
 </div>
 

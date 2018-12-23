@@ -5,7 +5,7 @@ $(function() {
 	var duration = $('.timebar .duration'); //总时间
 	var progress = $('.timebar .progress-bar'); //进度条
 	var volumebar = $('.volumeBar .volumewrap').find('.progress-bar');
-	playVideo[0].volume = 0.4; //初始化音量
+	playVideo[0].volume = 1.0; //初始化音量
 	playPause.on('click', function() {
 		playControl();
 	});
