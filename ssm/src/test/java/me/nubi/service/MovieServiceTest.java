@@ -25,4 +25,9 @@ public class MovieServiceTest {
         List<String> list = movieService.getMovieList();
         logger.info(JSON.toJSONString(list));
     }
+
+    @Test
+    public void getAMovie() {
+        movieService.getAMovie();
+    }
 }
