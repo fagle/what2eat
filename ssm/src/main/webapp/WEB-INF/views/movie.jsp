@@ -43,10 +43,10 @@
             <div class="playContent">
                 <div class="turnoff">
                     <ul>
-                        <li><a href="javascript:;" title="喜欢" class="glyphicon glyphicon-heart-empty"></a></li>
-                        <li><a href="javascript:;" title="关灯"
+                        <li><a href="javascript:" title="喜欢" class="glyphicon glyphicon-heart-empty"></a></li>
+                        <li><a href="javascript:" title="关灯"
                                class="btnLight on glyphicon glyphicon-sunglasses"></a></li>
-                        <li><a href="javascript:;" title="分享" class="glyphicon glyphicon-share"></a></li>
+                        <li><a href="javascript:" title="分享" class="glyphicon glyphicon-share"></a></li>
                     </ul>
                 </div>
                 <video width="100%" height="100%" id="playVideo">

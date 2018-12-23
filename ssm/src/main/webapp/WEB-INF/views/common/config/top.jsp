@@ -79,11 +79,11 @@
                         电影<span class="collapsing"></span>
                     </a>
                 </li>
-                <li>
-                    <a class="dropdown-toggle" href="#" >
-                        本项目介绍<span class="collapsing"></span>
-                    </a>
-                </li>
+                <%--<li>--%>
+                    <%--<a class="dropdown-toggle" href="#" >--%>
+                        <%--本项目介绍<span class="collapsing"></span>--%>
+                    <%--</a>--%>
+                <%--</li>--%>
                 <%--<li>--%>
                     <%--<a class="dropdown-toggle" href="#">--%>
                         <%--Shiro Demo 其他版本<span class="collapsing"></span>--%>
