@@ -58,6 +58,6 @@
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/media-player/reset.css"/>
 <link rel="stylesheet" href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css">
 <%--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />--%>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willesPlay.css"/>
+<%--<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willes-play.css"/>--%>
 <script src="<%=basePath%>/js/common/jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 </html>

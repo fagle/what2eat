@@ -229,3 +229,198 @@ function formatSeconds(value) {
 	}
 	return time;
 }
+
+function getCookie(name) {
+	var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
+	var r = document.cookie.match(reg)
+	return r ? unescape(r[2]) : null
+}
+window.hasBlackSide = Boolean(parseInt(getCookie('blackside_state')))
+
+function setSize() {
+	// // ssr
+	// if (window.__INITIAL_STATE__) {
+	// 	var version = window.__INITIAL_STATE__.pageVersion
+	// 	if (version === 'v_new_home_4') {
+	// 		part1SetSize(false)
+	// 	} else {
+	// 		// version: old
+	// 		originSetSize()
+	// 	}
+	// 	return
+	// }
+	// // csr
+	// originSetSize()
+	part1SetSize(false)
+}
+function checkVersion() {
+	let version
+
+	if (window.__INITIAL_STATE__) {
+		version = window.__INITIAL_STATE__.pageVersion
+		if (version === 'v_new_home_4') {
+			return 1
+		} else {
+			return 0
+		}
+	}
+
+	return 0
+}
+
+function constructStyleString(selector, style) {
+	var res = selector + ' {'
+	var ks = Object.keys(style)
+	for (var i = 0; i < ks.length; i++) {
+		res += ks[i] + ': ' + style[ks[i]] + ';'
+	}
+	return res + '}\n'
+}
+
+function part1SetSize(biggerMode) {
+	var isWide = window.isWide
+	var maxw = 1694
+	var minw = 375
+	// 右侧宽度
+	var h = window.innerHeight;
+	var w = Math.max(((document.body && document.body.clientWidth) || window.innerWidth), 1100)
+	var rw = biggerMode ? (innerWidth > 1680 ? 360 : 320) : (innerWidth > 1680 ? 411 : 350)
+	// 根据屏幕高度计算出来的左侧视频的宽度
+
+	var w1 = parseInt((h - (innerWidth > 1690 ? 300 : 290)) * 16 / 9),
+
+		// 根据屏幕宽度计算出来的左侧视频的宽度
+		w2 = w - 56 * 2 - rw,
+		min = w1 > w2 ? w2 : w1;
+
+	if (min < minw) { min = minw }
+	if (min > maxw) { min = maxw }
+
+	var vw = min + rw, vh;
+
+	if(window.isWide) {
+		vw = vw - 125
+		min = min - 100
+	}
+	let vd = vw - (isWide ? -30 : rw);
+	if (innerWidth < 600) {
+		vd = innerWidth;
+	}
+	if (window.hasBlackSide && !window.isWide) {
+		// 测试通过 - 90
+		vh = Math.round(((min - 14) + (isWide ? rw : 0)) * (9 / 16) + (innerWidth > 1680 ? 56 : 46)) + 96
+	} else {
+		// 宽屏
+		vh = Math.round((min + (isWide ? rw : 0)) * (9 / 16)) + (innerWidth > 1680 ? 56 : 46)
+	}
+
+	const leftContainerW = vw - rw
+	let leftObserveContentW
+	if (leftContainerW <= 924) {
+		leftObserveContentW = leftContainerW
+	} else if (leftContainerW <= 1232) {
+		leftObserveContentW = 924
+	} else {
+		leftObserveContentW = leftContainerW * 0.75
+	}
+
+	setSizeStyle.innerHTML = constructStyleString('.video-container-v1', {
+			width: 'auto',
+			// 写死padding，不然在ipad上会进行抖动
+			padding: '0 10px'
+		})
+		+ constructStyleString('.left-container', {
+			width: (vw - rw) + 'px'
+		})
+		+ constructStyleString('.left-container-under-player', {
+			// width: leftObserveContentW + 'px'
+			width: '100%'
+		})
+		+ constructStyleString('#bilibili-player', {
+			width: vw - (isWide ? -30 : rw) + 'px',
+			height: vh + 'px',
+			position: isWide ? 'relative' : 'static',
+		})
+		+ constructStyleString('#danmukuBox', {
+			'margin-top': isWide ? vh + 28 + 'px' : '0'
+		})
+		+ constructStyleString('#playerWrap', {
+			height: vh + 'px'
+		})
+		+ constructStyleString('#willesPlay', {
+			width: vd + 'px',
+			height: vh + 'px',
+			position: isWide ? 'relative' : 'static',
+			margin: '2px auto',
+			'box-shadow': '0px 0px 15px #333333'
+		})
+}
+
+function originSetSize() {
+	var isWide = window.isWide
+	var maxw = 1630
+	var minw = 638
+	// 右侧宽度
+	var rw = 350
+	var h = window.innerHeight
+	w = window.innerWidth
+	// 根据屏幕高度计算出来的左侧视频的宽度
+	w1 = parseInt((0.743 * h - 108.7) * 16 / 9),
+		// 根据屏幕宽度计算出来的左侧视频的宽度
+		w2 = w - 76 * 2 - rw,
+		min = w1 > w2 ? w2 : w1;
+	if (min < minw) { min = minw }
+	if (min > maxw) { min = maxw }
+	var vw = min + rw, vh;
+	if (window.hasBlackSide && !window.isWide) {
+		vh = Math.round(((min - 14) + (isWide ? rw : 0)) * (9 / 16) + 46) + 96
+	} else {
+		vh = Math.round((min + (isWide ? rw : 0)) * (9 / 16)) + 46
+	}
+	var styleString = constructStyleString('.v-wrap', {
+			width: vw + 'px',
+			// 写死padding，不然在ipad上会进行抖动
+			padding: '0 68px'
+		})
+		+ constructStyleString('.l-con', {
+			width: (vw - rw) + 'px'
+		})
+		+ constructStyleString('#bilibili-player', {
+			width: vw - (isWide ? 0 : rw) + 'px',
+			height: vh + 'px',
+			position: isWide ? 'relative' : 'static'
+		})
+		+ constructStyleString('#danmukuBox', {
+			'margin-top': isWide ? vh + 28 + 'px' : '0'
+		})
+		+ constructStyleString('#playerWrap', {
+			height: isWide ? vh - 0 + 'px' : 'auto'
+		})
+	setSizeStyle.innerHTML = styleString
+}
+
+setSize()
+window.addEventListener('resize', function () {
+	setSize()
+})
+
+//记忆宽屏bugfix
+window.PlayerAgent = {
+	player_widewin: function() {
+		if (checkVersion() === 1) {
+			window.scrollTo(0, 60) // 方案二/方案三切换宽屏模式时，不需要滚动
+		}
+		window.isWide = true
+		setSize()
+	},
+	// 窄屏
+	player_fullwin: function (boo) {
+		window.scrollTo(0, 0)
+		window.isWide = false
+		setSize()
+	},
+	toggleBlackSide: function (v) {
+		window.hasBlackSide = v
+		setSize()
+	}
+}

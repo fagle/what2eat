@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro.iml" filepath="$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro.iml" group="shiro/ssm-shiro" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro_main.iml" group="shiro/ssm-shiro" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1944906748/shiro_ssm-shiro_test.iml" group="shiro/ssm-shiro" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm.iml" group="ssm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm_main.iml" group="ssm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/ssm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/ssm_test.iml" group="ssm" />
       <module fileurl="file://$PROJECT_DIR$/vcnv/vcnv.iml" filepath="$PROJECT_DIR$/vcnv/vcnv.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat_main.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat_main.iml" group="what2eat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat_test.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat_test.iml" group="what2eat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp.iml" group="what2eatapp" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp_main.iml" group="what2eatapp" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eatapp_test.iml" group="what2eatapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat.main.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.iml" filepath="$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-139468414/what2eat.shiro_ssm-shiro.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ssm/what2eat.ssm.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eat.test.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eat.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.test.iml" filepath="$PROJECT_DIR$/.idea/modules/what2eatapp/what2eat.what2eatapp.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,7 @@
 package me.nubi.service.impl;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
@@ -57,16 +58,11 @@ public class ShiroManagerImpl implements ShiroManager {
 	 */
 	private String getFixedAuthRule(){
 		String fileName = "shiro_base_auth.ini";
-		ClassPathResource cp = new ClassPathResource(fileName);
-		INI4j ini = null;
-		try {
-			ini = new INI4j(cp.getFile());
-		} catch (IOException e) {
-			LoggerUtils.fmtError(getClass(), e, "加载文件出错。file:[%s]", fileName);
-		}
+		InputStream inputStream = ShiroManagerImpl.class.getClassLoader().getResourceAsStream(fileName);
+		INI4j ini = new INI4j(inputStream);
 		String section = "base_auth";
 		Set<String> keys = ini.get(section).keySet();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (String key : keys) {
 			String value = ini.get(section, key);
 			sb.append(key).append(" = ")

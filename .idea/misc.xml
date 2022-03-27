@@ -10,4 +10,7 @@
   </component>
   <component name="IdProvider" IDEtalkID="24205486D5F7AB48EB313A3DFD696791" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
 </project>

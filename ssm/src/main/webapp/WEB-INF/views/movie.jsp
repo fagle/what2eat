@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.net.URLEncoder" %><%--
   Created by IntelliJ IDEA.
   User: Fagle
   Date: 2017/7/22 0022
@@ -11,16 +11,21 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    String reqFileName = URLEncoder.encode((String)request.getAttribute("file"), "UTF-8");
 %>
 <html>
 <head>
     <base href="<%=basePath%>"/>
     <title>${file}</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style id="setSizeStyle"></style>
     <link rel="shortcut icon" href="<%=basePath%>/favicon.ico"/>
     <link href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="<%=basePath%>/css/common/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/media-player/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willes-play.css"/>
+    <link rel="stylesheet" href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />--%>
     <script src="<%=basePath%>/js/common/jquery/jquery1.8.3.min.js"></script>
     <script src="<%=basePath%>/js/common/layer/layer.js"></script>
     <script src="<%=basePath%>/js/common/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -30,7 +35,7 @@
 <jsp:include page="common/config/top.jsp">
     <jsp:param name="index" value="4"/>
 </jsp:include>
-
+<script>window.setSizeStyle=document.getElementById("setSizeStyle")</script>
 
 <div id="movie_container" class="container">
     <%--<h3>看电影咯，123好哟啊好哟</h3>--%>
@@ -50,9 +55,7 @@
                     </ul>
                 </div>
                 <video width="100%" height="100%" id="playVideo">
-                    <%--<source src="http://115.231.144.59/10/z/f/m/e/zfmeprwqhiydtbklvlaodpidksxlsz/hc.yinyuetai.com/8408014F06AA7ED9E43BC2E617F24B8E.flv?sc=80b3a67012591c91&br=780&vid=782863&aid=1559&area=KR&vst=0&ptp=mv&rd=yinyuetai.com"--%>
-                            <%--type="video/mp4">--%>
-                    <source src="<%=basePath%>/movies?name=${file}"
+                    <source src="<%=basePath%>/movies?name=<%=reqFileName%>"
                             type="video/mp4">
                     当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
                 </video>
@@ -97,10 +100,6 @@
 
 
 </body>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/media-player/reset.css"/>
-<link rel="stylesheet" href="<%=basePath%>/js/common/bootstrap/3.3.5/css/bootstrap.min.css">
-<%--<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 400px)" href="tinyScreen.css" />--%>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/media-player/willesPlay.css"/>
 <script src="<%=basePath%>/js/common/jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="<%=basePath%>/js/willesPlay.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=basePath%>/js/willes-play.js" type="text/javascript" charset="utf-8"></script>
 </html>

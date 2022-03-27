@@ -1,7 +1,6 @@
 package me.nubi.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Component
 public class MovieService {
 
@@ -21,7 +21,6 @@ public class MovieService {
         this.path = path;
     }
 
-    private static Logger logger = LoggerFactory.getLogger(MovieService.class);
     public File getAMovie() {
         File f = new File(path);
         File[] listFiles = f.listFiles((dir, name) -> name.endsWith(".mp4"));
@@ -30,12 +29,12 @@ public class MovieService {
                 for (File a : listFiles) {
                     if (!a.getName().endsWith(".mp4"))
                         continue;
-                    logger.info(a.getName());
+                    log.info(a.getName());
                     //logger.info("你好呀");
                 }
             }
         } catch (Exception e) {
-            logger.error("", e);
+            log.error("", e);
         }
 
         if (listFiles != null) {
@@ -46,44 +45,37 @@ public class MovieService {
     }
 
     public File getMovie(String fileName) {
-        return new File(path + "/"  + fileName);
+        return new File(path + "/" + fileName);
     }
 
     public List<String> getMovieList() {
-        File f = new File(path);
-        File[] listFiles = f.listFiles((dir, name) -> name.endsWith(".mp4"));
+        if (!path.endsWith("\\")) {
+            path = path + "\\";
+        }
         List<String> fileNameList = new ArrayList<>();
         try {
-            if (listFiles != null) {
-                for (File a : listFiles) {
-                    if (a.length() > Integer.MAX_VALUE)
-                        continue;
-                    fileNameList.add(a.getName());
-                }
-            }
-            listFiles =  f.listFiles();
-            if (listFiles != null) {
-                for (File file :listFiles) {
-                    if (file.isDirectory()) {
-                        getMovieList(file.getPath(), fileNameList);
-                    }
-
-                }
-            }
-
+            getMovieList(path, fileNameList);
         } catch (Exception e) {
-            logger.error("", e);
+            log.error("", e);
         }
         return fileNameList;
     }
 
-    private void getMovieList(String relative_path, List<String> fileList) {
-        logger.info(relative_path);
-        File f = new File(relative_path);
+    private void getMovieList(String filePath, List<String> fileList) {
+        File f = new File(filePath);
         File[] mp4files = f.listFiles((dir, name) -> name.endsWith(".mp4"));
         if (mp4files != null) {
             List<File> list = Arrays.asList(mp4files);
-            fileList.addAll(list.stream().filter(o->o.length() < Integer.MAX_VALUE).map(o -> f.getName() + "/" + o.getName()).collect(Collectors.toList()));
+            fileList.addAll(list.stream()
+                    .map(video -> video.getPath().replace(this.path, "")
+                            .replace("\\", "/"))
+                    .collect(Collectors.toList()));
+        }
+        File[] dirs = f.listFiles((dir, name) -> dir.isDirectory());
+        if (dirs != null) {
+            for (File file : dirs) {
+                getMovieList(file.getPath(), fileList);
+            }
         }
     }
 }

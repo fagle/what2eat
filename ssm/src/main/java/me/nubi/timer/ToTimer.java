@@ -1,6 +1,7 @@
 package me.nubi.timer;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ToTimer{
-	
+
+	public static final long TWO_HOURS_MILLS = 2 * 60 * 60 * 1000;
+
 	@Resource
     RoleService roleService;
 	@Scheduled(cron = "0/20 * * * * ? ")
@@ -27,7 +30,11 @@ public class ToTimer{
 		System.out.println(new Date().getTime());
 	}
 
-	
+
+	@Scheduled(fixedRate = TWO_HOURS_MILLS)
+	public void scanMoviesToDb() {
+
+	}
 	
 	
 	

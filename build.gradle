@@ -1,8 +1,12 @@
 buildscript {
     repositories {
+        maven{ url 'https://maven.aliyun.com/repository/central' }
+        maven{ url 'https://maven.aliyun.com/repository/public' }
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        maven{ url 'https://maven.aliyun.com/repository/grails-core'}
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url "http://repo.spring.io/release" }
-        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url "https://repo.spring.io/release" }
+        maven { url 'https://repo.spring.io/plugins-release' }
         jcenter()
     }
     dependencies {
@@ -12,7 +16,7 @@ buildscript {
         classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
     }
     ext {
-        springBootVersion = '1.5.4.RELEASE'
+        springBootVersion = '1.5.22.RELEASE'
     }
 }
 
@@ -36,6 +40,7 @@ subprojects {
     buildscript {
         repositories {
             maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url "https://repo.springsource.org/plugins-release" }
             jcenter()
         }
         dependencies {
@@ -48,5 +53,6 @@ subprojects {
     repositories {
         mavenLocal()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://repo.springsource.org/plugins-release" }
     }
 }

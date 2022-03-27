@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRange;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +17,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,14 +27,6 @@ public class MovieController {
     private MovieService movieService;
 
     private static Logger logger = LoggerFactory.getLogger(MovieController.class);
-
-//    @ResponseBody()
-//    @RequestMapping("list")
-//    public Map list() {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("list", movieService.getMovieList());
-//        return map;
-//    }
 
     @ResponseBody()
     @RequestMapping("list")
@@ -72,7 +65,7 @@ public class MovieController {
             } else {
                 response.setStatus(206);
             }
-            response.setContentLength((int)(end - start + 1));
+            response.setContentLengthLong(end - start + 1);
             response.setHeader("Content-Range", "bytes " + start +
                     "-" + end + "/" + fileLen);
             os = response.getOutputStream();

@@ -7,7 +7,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
 }
 
 body {
-    padding-top: 30px
+    padding-top: 30px;
+    background-color: #303036;
 }
 
 @media ( min-width: 768px) {
@@ -42,7 +43,7 @@ body {
     background: -o-linear-gradient(45deg, #020031 0, #6d3353 100%);
     background: -ms-linear-gradient(45deg, #020031 0, #6d3353 100%);
     background: linear-gradient(45deg, #020031 0, #6d3353 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient (startColorstr='#020031', endColorstr='#6d3353', GradientType=1 );
+    /*filter: progid:DXImageTransform.Microsoft.gradient (startColorstr='#020031', endColorstr='#6d3353', GradientType=1, );*/
     -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
     -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
     box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2)
@@ -74,7 +75,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+    /*background: url(../img/bs-docs-masthead-pattern.png) repeat center center;*/
     opacity: .4
 }
 

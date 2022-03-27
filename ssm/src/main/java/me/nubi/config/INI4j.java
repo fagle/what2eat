@@ -1,9 +1,5 @@
 package me.nubi.config;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -47,6 +43,11 @@ public class INI4j {
 	public INI4j(File file) throws FileNotFoundException {
 		this.init(new BufferedReader(new FileReader(file)));
 	}
+
+    public INI4j(InputStream inputStream) {
+        this.init(new BufferedReader(new InputStreamReader(inputStream)));
+    }
+
 	/***
 	 * 重载读取
 	 * @param path 给文件路径

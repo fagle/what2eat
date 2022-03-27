@@ -6,8 +6,8 @@
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 		<link   rel="icon" href="${basePath}/favicon.ico" type="image/x-icon" />
 		<link   rel="shortcut icon" href="${basePath}/favicon.ico" />
-		<link href="${basePath}/js/common/bootstrap/3.3.5/css/bootstrap.min.css?${_v}" rel="stylesheet"/>
-		<link href="${basePath}/css/common/base.css?${_v}" rel="stylesheet"/>
+		<link href="${basePath}/js/common/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="${basePath}/css/common/base.css" rel="stylesheet"/>
 	</head>
 	<body data-target="#one" data-spy="scroll">
 		

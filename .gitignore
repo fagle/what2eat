@@ -16,3 +16,6 @@ what2eat.xml
 what2eat.properties
 .project
 abc.txt
+.idea
+/gradle/wrapper/gradle-wrapper.jar
+build

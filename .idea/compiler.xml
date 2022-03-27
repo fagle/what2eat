@@ -15,17 +15,18 @@
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="shiro_ssm-shiro_main" target="1.7" />
-      <module name="shiro_ssm-shiro_test" target="1.7" />
-      <module name="spring_spring-boot-examples_main" target="1.8" />
-      <module name="spring_spring-boot-examples_test" target="1.8" />
-      <module name="ssm_main" target="1.8" />
-      <module name="ssm_test" target="1.8" />
-      <module name="what2eat_deploy" target="1.8" />
-      <module name="what2eat_main" target="1.8" />
-      <module name="what2eat_test" target="1.8" />
-      <module name="what2eatapp_main" target="1.8" />
-      <module name="what2eatapp_test" target="1.8" />
+      <module name="what2eat" target="1.8" />
+      <module name="what2eat.main" target="1.8" />
+      <module name="what2eat.shiro_ssm-shiro" target="1.7" />
+      <module name="what2eat.shiro_ssm-shiro.main" target="1.7" />
+      <module name="what2eat.shiro_ssm-shiro.test" target="1.7" />
+      <module name="what2eat.ssm" target="1.8" />
+      <module name="what2eat.ssm.main" target="1.8" />
+      <module name="what2eat.ssm.test" target="1.8" />
+      <module name="what2eat.test" target="1.8" />
+      <module name="what2eat.what2eatapp" target="1.8" />
+      <module name="what2eat.what2eatapp.main" target="1.8" />
+      <module name="what2eat.what2eatapp.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
