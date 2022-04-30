@@ -35,7 +35,7 @@ msgContent="
          	\"msgtype\": \"text\",
          	\"text\": {
              	\"content\":
-             	\"当前主机时间：$(date '+%Y-%m-%d %H:%M:%S')\n远程主机的IP地址为:\n${ipv6}\n\nJellyfin服务链接：\nhttp://[${ipv6}]:8096\n\nqbittorent服务链接：\nhttp://[${ipv6}]:8081\"
+             	\"当前主机时间：$(date '+%Y-%m-%d %H:%M:%S')\n远程主机的IP地址为:\n${ipv6}\n\nJellyfin服务链接：\nhttp://[${ipv6}]:8096\n\nqbittorent服务链接：\nhttp://[${ipv6}]:8081\n\nnginx服务链接：\nhttp://[${ipv6}]:82"
          	}
         }
         "
