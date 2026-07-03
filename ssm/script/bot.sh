@@ -19,7 +19,48 @@ then
   touch $ipv6_data_file
 fi
 ipv6_old=$(cat $ipv6_data_file)
-ipv6=$( curl -s http://v6.ipv6-test.com/api/myip.php)
+
+curl_no_proxy_ipv6() {
+  env -u http_proxy -u https_proxy -u all_proxy -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY \
+    curl -6 -s --noproxy '*' --connect-timeout 5 "$1"
+}
+
+get_public_ipv6() {
+  default_ipv6_dev=$(ip -6 route show default 2>/dev/null | awk '{ for (i = 1; i <= NF; i++) if ($i == "dev") { print $(i + 1); exit } }')
+  if [ -n "$default_ipv6_dev" ]; then
+    ip=$(ip -6 addr show dev "$default_ipv6_dev" scope global 2>/dev/null | awk '/inet6 / && $2 ~ /\/64$/ && $0 !~ /deprecated/ && $0 !~ /temporary/ { sub(/\/.*/, "", $2); print $2; exit }')
+    if echo "$ip" | grep -Eq '^[0-9a-fA-F:]+$' && echo "$ip" | grep -q ':'; then
+      echo "$ip"
+      return 0
+    fi
+  fi
+
+  for url in \
+    "https://6.ipw.cn" \
+    "https://api6.ipify.org" \
+    "https://v6.ident.me" \
+    "https://ipv6.icanhazip.com" \
+    "https://ifconfig.co/ip"
+  do
+    ip=$(curl_no_proxy_ipv6 "$url" | tr -d '[:space:]')
+    if echo "$ip" | grep -Eq '^[0-9a-fA-F:]+$' && echo "$ip" | grep -q ':'; then
+      echo "$ip"
+      return 0
+    fi
+  done
+
+  if [ -n "$default_ipv6_dev" ]; then
+    ip=$(ip -6 addr show dev "$default_ipv6_dev" scope global 2>/dev/null | awk '/inet6 / && $0 !~ /deprecated/ { sub(/\/.*/, "", $2); print $2; exit }')
+    if echo "$ip" | grep -Eq '^[0-9a-fA-F:]+$' && echo "$ip" | grep -q ':'; then
+      echo "$ip"
+      return 0
+    fi
+  fi
+
+  return 1
+}
+
+ipv6=$(get_public_ipv6)
 if [ '' == "$ipv6" ]
 then
   echo 'ipv6 unavailable'
